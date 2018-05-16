@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="author" content="Blog Author">
+<meta name="description" content="Really cool blog about ... something">
+<title> Home › Blog Title</title>
+<link rel="canonical" href="http://localhost:4000/contrast/">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="/contrast/basic.css" rel="stylesheet">
+<link href="/contrast/highlight.css" rel="stylesheet">
+<link href="/contrast/index.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/contrast/feed.xml" title="Blog Title" />
+
+
+<header>
+  <h1><a href="/contrast">Blog Title</a></h1>
+  <nav>
+    <div><a href="/contrast/">Home</a><a href="/contrast/archive/">Archive</a><a href="/contrast/about/">About</a></div>
+    <div><a href="https://twitter.com/twitter/"><i class="fa fa-twitter"></i></a><a href="https://github.com/niklasbuschmann/contrast"><i class="fa fa-github"></i></a><a href="mailto:niklas.buschmann@posteo.de"><i class="fa fa-envelope"></i></a></div>
+  </nav>
+</header>
+<main>
+  
+  <article>
+    <header>
+      <h1><a href="/contrast/text/2017/02/17/example-text/">Example Text</a></h1>
+      <time datetime="2017-02-17T23:37:00+00:00">February 17, 2017</time>
+    </header>
+<p>Lorem <strong>ipsum dolor</strong> sit amet, consectetur adipiscing elit, <code class="highlighter-rouge">sed do eiusmod tempor</code> incididunt ut <em>labore</em> et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <strong><em>exercitation</em></strong> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute <em>irure dolor</em> in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+<p>The term was coined in 1964 by two <a href="https://en.wikipedia.org/wiki/Australia">Australian</a> <a href="https://en.wikipedia.org/wiki/CSIRO">CSIRO</a> researchers, Isabel Joy Bear and Richard G. Thomas, for an article in the journal <a href="https://en.wikipedia.org/wiki/Nature_(journal)">Nature</a>. In the article, the authors describe how the smell derives from an oil exuded by certain <a href="https://en.wikipedia.org/wiki/Plants">plants</a> during dry periods, whereupon it is <a href="https://en.wikipedia.org/wiki/Absorption_(chemistry)">absorbed</a> by <a href="https://en.wikipedia.org/wiki/Clay">clay</a>-based <a href="https://en.wikipedia.org/wiki/Soil">soils</a> and <a href="https://en.wikipedia.org/wiki/Rock_(geology)">rocks</a>.</p>
+
+
+    
+    <footer><a class="ghost" href="/contrast/text/2017/02/17/example-text/">read more »</a></footer>
+    
+  </article>
+
+  <article>
+    <header>
+      <h1><a href="/contrast/objects/2017/02/01/example-objects/">Example Objects</a></h1>
+      <time datetime="2017-02-01T22:30:00+00:00">February 1, 2017</time>
+    </header>
+<h3 id="code">Code</h3>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">static</span> <span class="kt">void</span> <span class="nf">asyncEnabled</span><span class="p">(</span><span class="n">Dict</span><span class="o">*</span> <span class="n">args</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">vAdmin</span><span class="p">,</span> <span class="n">String</span><span class="o">*</span> <span class="n">txid</span><span class="p">,</span> <span class="k">struct</span> <span class="n">Allocator</span><span class="o">*</span> <span class="n">requestAlloc</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Admin</span><span class="o">*</span> <span class="n">admin</span> <span class="o">=</span> <span class="n">Identity_check</span><span class="p">((</span><span class="k">struct</span> <span class="n">Admin</span><span class="o">*</span><span class="p">)</span> <span class="n">vAdmin</span><span class="p">);</span>
+    <span class="kt">int64_t</span> <span class="n">enabled</span> <span class="o">=</span> <span class="n">admin</span><span class="o">-&gt;</span><span class="n">asyncEnabled</span><span class="p">;</span>
+    <span class="n">Dict</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Dict_CONST</span><span class="p">(</span><span class="n">String_CONST</span><span class="p">(</span><span class="s">"asyncEnabled"</span><span class="p">),</span> <span class="n">Int_OBJ</span><span class="p">(</span><span class="n">enabled</span><span class="p">),</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">Admin_sendMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">,</span> <span class="n">txid</span><span class="p">,</span> <span class="n">admin</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+
+    
+    <footer><a class="ghost" href="/contrast/objects/2017/02/01/example-objects/">read more »</a></footer>
+    
+  </article>
+
+</main>
+
+<footer>
+    <a  class="disabled" >« newer posts</a>
+    <span class="paginate">page 1 of 2</span>
+    <a  class="gray" href="/contrast/page2" >older posts »</a>
+</footer>
+
+
+
