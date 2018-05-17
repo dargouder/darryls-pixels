@@ -7,6 +7,7 @@ baseurl: "/contrast"
 paginate: 2
 permalink: pretty
 excerpt_separator: "\n\n\n" # two blank lines
+remote_theme: Contrast
 
 style:
   minimalist: false
