@@ -14,9 +14,11 @@ As great and as fleshed out the samples are, there is a lot of boilerplate code,
 
 I thought it would be interesting to write the simplest thing I can think of with embree, A hello world ray tracing example. I'm a big fan of Dr. Peter Shirley's Ray Tracing in One Weekend Book series, so I thought I'd redo the first 2 chapters (with some changes) using embree. Let's get started.
 
+
 ### What is embree?
 
 Embree is a high-performance ray tracing kernel library written by Intel. They implement state-of-the-art implementations of accelleration structure and intersection methods, and provide a plethora of features to write a performant ray tracer. More details can be found here, and in their white paper.
+
 
 ### Hello Embree!
 
@@ -33,7 +35,15 @@ int main()
 }
 {% endhighlight %}
 
-We'll work through each of these with a short explanation for everything. The full source code listing can be found here. It is self contained, with embree being part of the sources. If you have any issues with compilation, feel free to contact me.	
+We'll work through each of these with a short explanation for everything. The full source code listing can be found here. It is self contained, with embree being part of the sources. If you have any issues with compilation, feel free to contact me.
+
+If you want to skip ahead:
+1. [Device initiation](#device-initiation)
+2. [Adding geometry to the scene](#adding-geometry-to-the-scene)
+3. [Creating the triangle geometry and defining the vertices](#creating-the-triangle-geometry-and-defining-the-vertices)
+4. [Render image](#render-image)
+5. [Output image](#output-image)
+
 
 ### Device initiation 
 
@@ -47,6 +57,7 @@ The device object is defined to be a class factory for all the other objects tha
 
 The new scene is created and bound to the device previously created.
 
+
 ### Adding geometry to the scene
 
 We now need to define and add the geometry to our scene. I'm just going to create a triangle in the middle of the screen.
@@ -57,6 +68,7 @@ We now need to define and add the geometry to our scene. I'm just going to creat
     // Assign the vertices to the geometry buffer
     // Commit geometry to the scene
 {% endhighlight %}
+
 
 #### Creating the triangle geometry and defining the vertices
 
@@ -118,6 +130,7 @@ If you're not familiar with regards to the parameters of the camera, I'd suggest
 Nothing too fancy here, just define the image parameters and the camera parameters for the primary ray generation.
 
 The next part is where we get to test the ray intersection!
+
 
 ### Render image 
 
@@ -182,6 +195,7 @@ image[(x + width * y)*4 + 3] = (unsigned char)(255);
 {% endhighlight %}
 
 and repeat the whole process for each pixel. When that's done, we spit out our png:
+
 
 ### Output image
 {% highlight c %}
