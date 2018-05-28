@@ -4,17 +4,14 @@ title: "About"
 
 ### About Me
 
-My name's Darryl Gouder, I'm from Malta, currently living in London and working as a Software Developer at MPC.
+My name's Darryl Gouder, I'm from Malta (it's a tiny island in the Mediterranean) and I'm currently living in London, working as a Software Developer at MPC, part of the New Technology team.
 
-### My life
+I've got this website and blog to show some of the stuff I work on in my free time. Most of it will pertain to computer graphics, mostly ray tracing related stuff as it is a big passion of mine. I might occasionally post something else, it depends!
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Apart from ray tracing, graphics and math, I like to play MMORPGs, a lot of different sports (mostly swimming) and I'm a big music affascinando.
 
- - Dictumst
- - Vestibulum
- - Rhoncus
- - Pellentesque
- 
-Maecenas accumsan lacus vel facilisis volutpat est velit. Arcu bibendum at varius vel. Aliquam etiam erat velit scelerisque in dictum non consectetur a. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. 
+If you ever want to chat, feel free to email me or send me a DM on Twitter.
 
-Ultrices dui sapien eget mi proin sed. Dignissim sodales ut eu sem.
+### About this site
+
+This site is powered by Github Pages. It uses Jekyll and the theme from https://github.com/niklasbuschmann/contrast.
