@@ -18,7 +18,7 @@ navigation:
   - about.md
 
 disqus:
-  shortname: darryls-pixels
+  shortname: darrylgouder
 
 comments:
   disqus: "disqus-contrast"
