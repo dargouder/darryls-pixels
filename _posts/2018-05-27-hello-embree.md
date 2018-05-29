@@ -206,7 +206,9 @@ if (error) std::cout << "encoder error " << error << ": " << lodepng_error_text(
 
 I'm using lodepng to write the image to file, nothing too complex going on here, and then we get this!
 
-![Hello Embree]({{ site.url }}/images/hello-embree/hello.png)
+<p align="center">
+<img src="{{ site.url }}/images/hello-embree/hello.png" alt="Mountain View">
+</p>
 
 I hope this wasn't too verbose. Embree's extensive features means that it's now significantly easier to write a high-performant ray tracer. I'm very excited in doing more fleshed out examples and melding it with my own ray tracer. I will have to probably change a lot from an architecture standpoint but the performance gains warrant it.
 
