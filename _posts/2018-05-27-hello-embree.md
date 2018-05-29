@@ -8,7 +8,7 @@ I've been slowly developing a raytracer which has been a lot of fun and a great 
 
 I'm at a point now where I am importing meshes of a larger nature, and I was not content with my BVH implementation. As much as I would like to read the state of the art papers on BVH construction and traversal, I've decided to opt to use embree instead. I would rather focus on the light transport part and focus on getting prettier images and getting them to converge quicker from an algorithmic standpoint. As a friend of mine said, I have to pick my battles, and embree is going to do a lot of heavy lifting for me so that I can focus more on what I'd like to write.
 
-Setting up embree with CMake is quite easy [I've got the full source code of this post available here](https://bitbucket.org/dgouder/embree-renderer/src/master/){:target="_blank"}, and I won't go into details into how to set it up - the CMakeLists.txt is quite self explanatory and I've added as much comments as I can.
+Setting up embree with CMake is quite easy [I've got the full source code of this post available here](https://bitbucket.org/dgouder/embree-renderer/src/master/){:target="_blank"}	, and I won't go into details into how to set it up - the CMakeLists.txt is quite self explanatory and I've added as much comments as I can.
 
 As great and as fleshed out the samples are, there is a lot of boilerplate code, written in different header files. This put me off initially but with a bit of digging, and building the samples with a powerful IDE went long way in help way in helping me zip around the API and the headers. 
 
@@ -204,6 +204,10 @@ unsigned error = lodepng::encode("hello.png", image, width, height);
 if (error) std::cout << "encoder error " << error << ": " << lodepng_error_text(error) << std::endl;
 {% endhighlight %}
 
-I'm using lodepng to write the image to file, nothing too complex going on here.
+I'm using lodepng to write the image to file, nothing too complex going on here, and then we get this!
+
+![Hello Embree]({{ site.url }}/images/hello-embree/hello.png)
 
 I hope this wasn't too verbose. Embree's extensive features means that it's now significantly easier to write a high-performant ray tracer. I'm very excited in doing more fleshed out examples and melding it with my own ray tracer. I will have to probably change a lot from an architecture standpoint but the performance gains warrant it.
+
+
