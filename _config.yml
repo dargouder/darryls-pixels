@@ -20,7 +20,9 @@ navigation:
 comments:
   disqus: "disqus-contrast"
 #  isso: "comments.mysite.org"
-
+disqus:
+  shortname: darryls-pixels
+  
 links: # see http://fontawesome.io/icons/#brand for all possible icons
   - twitter: "https://twitter.com/dargouder"
   - github: "https://github.com/dargouder"
