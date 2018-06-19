@@ -10,7 +10,7 @@ I've got this website and blog to show some of the stuff I work on in my free ti
 
 Apart from ray tracing, graphics and math, I like to play MMORPGs, a lot of different sports (mostly swimming) and I'm a big music affascinando.
 
-If you ever want to chat, feel free to email me or send me a DM on Twitter.
+If you ever want to chat about, feel free to email me or send me a DM on Twitter.
 
 ### About this site
 
