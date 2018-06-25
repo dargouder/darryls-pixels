@@ -61,15 +61,13 @@ The new scene is created and bound to the device previously created.
 
 ### Adding geometry to the scene
 
-
-
 We now need to define and add the geometry to our scene. I'm just going to create a triangle in the middle of the screen.
 {% highlight c %}
-// Add geometry to scene
-    // Create a new geometry for the triangle
-    // Define the vertices
-    // Assign the vertices to the geometry buffer
-    // Commit geometry to the scene
+// Create a new geometry for the triangle
+// Define the vertices
+// Assign the vertices to the geometry buffer 
+// Commit geometry to the scene
+
 {% endhighlight %}
 
 #### Creating the triangle geometry and defining the vertices
@@ -119,7 +117,7 @@ We'll initiate the image and the camera parameters.
 // Initiate image parameters, image and camera
 const int width = 600;
 const int height = 300;
-unsigned char *image = new unsigned char[width * height * 4];
+std::vector< unsigned char > image;
 
 embree::Vec3fa lower_left_corner(-2.0f, -1.0f, -1.0f);
 embree::Vec3fa horizontal(4.0f, 0.0f, 0.0f);
@@ -159,7 +157,7 @@ RTCIntersectContext context;
 rtcInitIntersectContext(&context);
 {% endhighlight %}
 
-READ ABOUT THE INTERSECTION CONTEXT AND THEN WRITE IT HERE
+We use the RTCIntersectContext for your ray intersection test. [rtcInitIntersectContext](https://embree.github.io/api.html#rtcinitintersectcontext){:target="_blank"} takes flags which can optimize the performance of the ray tracer, such as indicating that the rays are coherent.
 
 This is the primary ray generation stolen from Dr. Shirley's Ray Tracing in One Weekend book.
 
@@ -193,10 +191,10 @@ and that's it! The embree specific stuff ends here. I haven't included the ray d
 
 {% highlight c %}
 // Set pixel colour
-image[(x + width * y)*4 + 0] = (unsigned char)(color[0] * 255.0);
-image[(x + width * y)*4 + 1] = (unsigned char)(color[1] * 255.0);
-image[(x + width * y)*4 + 2] = (unsigned char)(color[2] * 255.0);
-image[(x + width * y)*4 + 3] = (unsigned char)(255);
+image.push_back((unsigned char)(color[0] * 255.0f));
+image.push_back((unsigned char)(color[1] * 255.0f));
+image.push_back((unsigned char)(color[2] * 255.0f));
+image.push_back((unsigned char)(255.0f));
 {% endhighlight %}
 
 and repeat the whole process for each pixel. When that's done, we spit out our png:
