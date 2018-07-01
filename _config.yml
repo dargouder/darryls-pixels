@@ -7,7 +7,7 @@ baseurl: "/darryls-pixels"
 paginate: 2
 permalink: pretty
 excerpt_separator: "\n\n\n" # two blank lines
-
+future: false
 
 style:
   minimalist: false
