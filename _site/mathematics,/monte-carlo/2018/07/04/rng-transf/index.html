@@ -3,15 +3,15 @@
 <meta charset="utf-8">
 <meta name="author" content="Darryl Gouder">
 <meta name="description" content="Blog about code and stuff...">
-<title> Home › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/darryls-pixels/">
+<title> Random Number Generation and Transformation › Darryl's Pixels</title>
+<link rel="canonical" href="http://localhost:4000/darryls-pixels/mathematics,/monte-carlo/2018/07/04/rng-transf/">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/darryls-pixels/basic.css" rel="stylesheet">
 <link href="/darryls-pixels/highlight.css" rel="stylesheet">
 <link href="/darryls-pixels/index.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/darryls-pixels/feed.xml" title="Darryl's Pixels" />
-
+<script src="//darrylgouder.disqus.com/embed.js" async></script>
 
 <header>
   <h1><a href="/darryls-pixels">Darryl's Pixels</a></h1>
@@ -21,7 +21,6 @@
   </nav>
 </header>
 <main>
-  
   <article>
     <header>
       <h1><a href="/darryls-pixels/mathematics,/monte-carlo/2018/07/04/rng-transf/">Random Number Generation and Transformation</a></h1>
@@ -59,30 +58,16 @@ and X_0 is the seed value, 0 &lt;= X_0 &lt; m.</p>
 <p>Well that’s interesting, pairs line up as lines… what if we plot them in 3D?</p>
 
     
-  </article>
-
-  <article>
-    <header>
-      <h1><a href="/darryls-pixels/rendering,/graphics/2018/05/27/hello-embree/">Hello embree</a></h1>
-      <time datetime="2018-05-27T10:30:00+01:00">May 27, 2018</time>
-    </header>
-<p>I’ve been slowly developing a raytracer which has been a lot of fun and a great learning experience both from a technical standpoint and the theoretical side of physically-based rendering.</p>
-
-<p>I’m at a point now where I am importing meshes of a larger nature, and I was not content with my BVH implementation. As much as I would like to read the state of the art papers on BVH construction and traversal and implement them myself, I’ve decided to opt to use embree instead. I would rather focus on the light transport part and focus on getting prettier images and getting them to converge quicker from an algorithmic standpoint. As a friend of mine said, I have to pick my battles, and embree is going to do a lot of heavy lifting for me so that I can focus more on what I’d like to write.</p>
-
-<p>Setting up embree with CMake is quite easy <a href="https://bitbucket.org/dgouder/embree-renderer/src/master/" target="_blank">I’ve got the full source code of this post available here</a>	, and I won’t go into details into how to set it up - the CMakeLists.txt is quite self explanatory and I’ve added as much comments as I can.</p>
-
-<p>As great and as fleshed out the samples are, there is a lot of boilerplate code, written in different header files. This put me off initially but with a bit of digging, and building the samples with a powerful IDE went long way in help way in helping me zip around the API and the headers.</p>
-
-<p>I thought it would be interesting to write the simplest thing I can think of with embree, a hello world ray tracing example if you will, I’ll explain below what we’ll do.</p>
-
-
     
-    <footer><a class="ghost" href="/darryls-pixels/rendering,/graphics/2018/05/27/hello-embree/">read more »</a></footer>
+    <hr><div id="disqus_thread"></div>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
   </article>
-
 </main>
 
 
+<footer>
+     <span></span> 
+    <a href="/darryls-pixels/rendering,/graphics/2018/05/27/hello-embree/">Hello embree »</a>
+</footer>
 

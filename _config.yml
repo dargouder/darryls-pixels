@@ -8,6 +8,7 @@ paginate: 2
 permalink: pretty
 excerpt_separator: "\n\n\n" # two blank lines
 
+
 style:
   minimalist: false
   dark: false

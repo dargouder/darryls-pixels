@@ -4,7 +4,7 @@
 <meta name="author" content="Darryl Gouder">
 <meta name="description" content="Blog about code and stuff...">
 <title> Hello embree › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/darryls-pixels/objects/2018/05/27/hello-embree/">
+<link rel="canonical" href="http://localhost:4000/darryls-pixels/rendering,/graphics/2018/05/27/hello-embree/">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/darryls-pixels/basic.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 <main>
   <article>
     <header>
-      <h1><a href="/darryls-pixels/objects/2018/05/27/hello-embree/">Hello embree</a></h1>
+      <h1><a href="/darryls-pixels/rendering,/graphics/2018/05/27/hello-embree/">Hello embree</a></h1>
       <time datetime="2018-05-27T10:30:00+01:00">May 27, 2018</time>
     </header>
 <p>I’ve been slowly developing a raytracer which has been a lot of fun and a great learning experience both from a technical standpoint and the theoretical side of physically-based rendering.</p>
@@ -80,11 +80,10 @@
 
 <p>We now need to define and add the geometry to our scene. I’m just going to create a triangle in the middle of the screen.</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Add geometry to scene
-</span>    <span class="c1">// Create a new geometry for the triangle
-</span>    <span class="c1">// Define the vertices
-</span>    <span class="c1">// Assign the vertices to the geometry buffer
-</span>    <span class="o">//</span> <span class="n">Commit</span> <span class="n">geometry</span> <span class="n">to</span> <span class="n">the</span> <span class="n">scene</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Create a new geometry for the triangle
+// Define the vertices
+// Assign the vertices to the geometry buffer 
+</span><span class="o">//</span> <span class="n">Commit</span> <span class="n">geometry</span> <span class="n">to</span> <span class="n">the</span> <span class="n">scene</span></code></pre></figure>
 
 <h4 id="creating-the-triangle-geometry-and-defining-the-vertices">Creating the triangle geometry and defining the vertices</h4>
 
@@ -119,14 +118,14 @@
 
 <p>So what does this all mean? The <a href="https://embree.github.io/api.html#rtccommitgeometry" target="_blank">rtcCommitGeometry</a> call commits all the modifications to the geometry and has to be called each time we modify the geometry.</p>
 
-<p>We then attach the geometry to the scene using <a href="https://embree.github.io/api.html#rtcattachgeometry" target="_blank">rtcAttachGeometry</a>. The releaseGeometry<a href="https://embree.github.io/api.html#rtcreleasegeometry" target="_blank">rtcReleaseGeometry</a> call decreases the reference count of each piece of geometry. I was quite curious when I saw this and I think it’s because rtcAttachGeometry increase a reference to the mesh by the scene, so the original mesh handle can be disposed of. To commit our scene we’ll need to call rtcCommitScene which builds our spatial data structure. Everytime we modify the geometry, we need to go through this step. We can commit to the scene all once though, as you’ll not might notice in my actual source code that the commit is right after the call to the function that defines the geometry. You can define and commit all your geometry at once and then have a single called right after these definitions.</p>
+<p>We then attach the geometry to the scene using <a href="https://embree.github.io/api.html#rtcattachgeometry" target="_blank">rtcAttachGeometry</a>. The <a href="https://embree.github.io/api.html#rtcreleasegeometry" target="_blank">rtcReleaseGeometry</a> call decreases the reference count of each piece of geometry. I was quite curious when I saw this and I think it’s because rtcAttachGeometry increase a reference to the mesh by the scene, so the original mesh handle can be disposed of. To commit our scene we’ll need to call rtcCommitScene which builds our spatial data structure. Everytime we modify the geometry, we need to go through this step. We can commit to the scene all once though, as you’ll not might notice in my actual source code that the commit is right after the call to the function that defines the geometry. You can define and commit all your geometry at once and then have a single called right after these definitions.</p>
 
 <p>We’ll initiate the image and the camera parameters.</p>
 
 <figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Initiate image parameters, image and camera
 </span><span class="k">const</span> <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
-<span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="n">new</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">[</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="mi">4</span><span class="p">];</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">&gt;</span> <span class="n">image</span><span class="p">;</span>
 
 <span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">lower_left_corner</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
 <span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">horizontal</span><span class="p">(</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
@@ -162,7 +161,7 @@
 </span><span class="n">RTCIntersectContext</span> <span class="n">context</span><span class="p">;</span>
 <span class="n">rtcInitIntersectContext</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">);</span></code></pre></figure>
 
-<p>READ ABOUT THE INTERSECTION CONTEXT AND THEN WRITE IT HERE</p>
+<p>We use the RTCIntersectContext for your ray intersection test. <a href="https://embree.github.io/api.html#rtcinitintersectcontext" target="_blank">rtcInitIntersectContext</a> takes flags which can optimize the performance of the ray tracer, such as indicating that the rays are coherent.</p>
 
 <p>This is the primary ray generation stolen from Dr. Shirley’s Ray Tracing in One Weekend book.</p>
 
@@ -189,10 +188,10 @@
 <p>and that’s it! The embree specific stuff ends here. I haven’t included the ray definition and the auxiliary functions to convert because they’re one liners and you can have a poke around in the repo. We then set the colour of the pixel:</p>
 
 <figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Set pixel colour
-</span><span class="n">image</span><span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
-<span class="n">image</span><span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
-<span class="n">image</span><span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
-<span class="n">image</span><span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="mi">255</span><span class="p">);</span></code></pre></figure>
+</span><span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span>
+<span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span>
+<span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span>
+<span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span></code></pre></figure>
 
 <p>and repeat the whole process for each pixel. When that’s done, we spit out our png:</p>
 
@@ -228,4 +227,9 @@
   </article>
 </main>
 
+
+<footer>
+    <a href="/darryls-pixels/mathematics,/monte-carlo/2018/07/04/rng-transf/">« Random Number Generation and Transformation</a>
+     <span></span> 
+</footer>
 
