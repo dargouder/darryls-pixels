@@ -209,7 +209,7 @@ if (error) std::cout << "encoder error " << error << ": " << lodepng_error_text(
 I'm using lodepng to write the image to file, nothing too complex going on here, and then we get this!
 
 <p align="center">
-<img src="{{ site.url }}/images/hello-embree/hello.png" alt="Hello embree">
+<img src="/assets/hello-embree/hello.png" alt="Hello embree">
 </p>
 
 ### Release scene

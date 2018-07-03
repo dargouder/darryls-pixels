@@ -4,26 +4,26 @@
 <meta name="author" content="Darryl Gouder">
 <meta name="description" content="Blog about code and stuff...">
 <title> Pseudo Random Number Generation › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/darryls-pixels/mathematics,/monte-carlo/2018/07/04/prngs/">
+<link rel="canonical" href="http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs/">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="/darryls-pixels/basic.css" rel="stylesheet">
-<link href="/darryls-pixels/highlight.css" rel="stylesheet">
-<link href="/darryls-pixels/index.css" rel="stylesheet">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/darryls-pixels/feed.xml" title="Darryl's Pixels" />
+<link href="/basic.css" rel="stylesheet">
+<link href="/highlight.css" rel="stylesheet">
+<link href="/index.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
 <script src="//darrylgouder.disqus.com/embed.js" async></script>
 
 <header>
-  <h1><a href="/darryls-pixels">Darryl's Pixels</a></h1>
+  <h1><a href="">Darryl's Pixels</a></h1>
   <nav>
-    <div><a href="/darryls-pixels/">Home</a><a href="/darryls-pixels/archive/">Archive</a><a href="/darryls-pixels/about/">About</a></div>
+    <div><a href="/">Home</a><a href="/archive/">Archive</a><a href="/about/">About</a></div>
     <div><a href="https://twitter.com/dargouder"><i class="fa fa-twitter"></i></a><a href="https://github.com/dargouder"><i class="fa fa-github"></i></a><a href="mailto:dargouder@gmail.com"><i class="fa fa-envelope"></i></a></div>
   </nav>
 </header>
 <main>
   <article>
     <header>
-      <h1><a href="/darryls-pixels/mathematics,/monte-carlo/2018/07/04/prngs/">Pseudo Random Number Generation</a></h1>
+      <h1><a href="/mathematics,/monte-carlo/2018/07/04/prngs/">Pseudo Random Number Generation</a></h1>
       <time datetime="2018-07-04T10:30:00+01:00">July 4, 2018</time>
     </header>
 <p>In this post I’ll talk a bit about pseudo random number generation. This will be the first in an assortment of posts  regarding monte carlo methods.</p>
@@ -40,12 +40,17 @@
 
 <p>The LCG is an easy-to-implement PRNG, the function definition being:</p>
 
-<p>X_n+1 = (a * X_n + c) mod m</p>
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?X_{n&plus;1}=&space;(a&space;*&space;X_n&space;&plus;&space;c)&space;\bmod&space;m" title="X_{n+1}= (a * X_n + c) \bmod m" />
+</p>
 
-<p>where m is the modulus constant, and m &gt; 0.
-a is the multiplier, and 0 &lt; a &lt; m
-c is te increment, 0 &lt;= c &lt;= m
-and X_0 is the seed value, 0 &lt;= X_0 &lt; m.</p>
+<p>where:</p>
+<ul>
+  <li><strong>m</strong> is the modulus constant, and <strong>m</strong> &gt; 0.</li>
+  <li><strong>a</strong> is the multiplier, and 0 &lt; <strong>a</strong> &lt; <strong>m</strong>.</li>
+  <li><strong>c</strong> is the increment, 0 &lt;= <strong>c</strong> &lt;= <strong>m</strong>.</li>
+  <li><strong>X</strong><sub>0</sub> is the seed value, 0 &lt;= <strong>X</strong><sub>0</sub> &lt; <strong>m</strong>.</li>
+</ul>
 
 <p>The above constants are all integers. Careful selection of these values ensures that the sequence we get is of a high quality.</p>
 
@@ -54,25 +59,25 @@ and X_0 is the seed value, 0 &lt;= X_0 &lt; m.</p>
 <p>N is the number of random numbers we want to generate. Let’s generate 1000 samples and plot a histogram to look at the distribution.</p>
 
 <p align="center">
-<img src="http://localhost:4000/images/prngs/lcg_histogram.png" alt="LCG Histogram" />
+<img src="/assets/prngs/lcg_histogram.png" alt="LCG histogram" />
 </p>
 
 <p>It’s fair to say, this distribution looks good. Given that the generation of a value is dependent on the next let’s see if we can see a pattern by plotting them in a time series.</p>
 
 <p align="center">
-<img src="http://localhost:4000/images/prngs/lcg_time_series.png" alt="LCG Time Series" />
+<img src="/assets/prngs/lcg_time_series.png" alt="LCG Time Series" />
 </p>
 
-<p>That looks pretty random, so let’s plot them in series, taking pairs as cartesian coordinates (x_2k-1, x_2k).</p>
+<p>That looks pretty random, so let’s plot them in series, taking pairs as cartesian coordinates (x_2k-1, x_2k). Plotting them in this manner is called autocorrelation</p>
 
 <p align="center">
-<img src="http://localhost:4000/images/prngs/lcg_2d.png" alt="LCG 2D Autocorrelation" />
+<img src="/assets/prngs/lcg_2d.png" alt="LCG 2D Autocorrelation" />
 </p>
 
 <p>Well that’s interesting, pairs line up as lines… what if we plot them in 3D?</p>
 
 <p align="center">
-<img src="http://localhost:4000/images/prngs/lcg_3d.png" alt="LCG 3D Autocorrelation" />
+<img src="/assets/prngs/lcg_3d.gif" alt="LCG 3D Autocorrelation" />
 </p>
 
 <p>The numbers are forming a line in 2D, a plane in 3D and this pattern continues in n-dimensions, where a n-dimensional hyperplane is formed for the n’th dimension. George Marsaglia identified this issue in 1968 and it is now know as the Marsaglia Theorem. He pointed out the worrying conclusion that all the papers that had used a LCG as their PRNG of choice might have wrong results. This highlights the importance of using a good PRNG.</p>
@@ -81,10 +86,27 @@ and X_0 is the seed value, 0 &lt;= X_0 &lt; m.</p>
 
 <p>If we re-run the above tests using Mersenne Twister, we can see that, the histogram looks acceptable,</p>
 
+<p align="center">
+<img src="/assets/prngs/mersenne_hist.png" alt="Mersenne Histogram" />
+</p>
+
 <p>so does the time series plot,</p>
 
-<p>and the 2D plot (points look to be well distributed in the 2D plane)
-and the 3D plot (points look to be well distributed in the 3D unit cube).</p>
+<p align="center">
+<img src="/assets/prngs/mersenne_time_series.png" alt="Mersenne Time Series" />
+</p>
+
+<p>and the 2D plot (points look to be well distributed in the 2D plane)</p>
+
+<p align="center">
+<img src="/assets/prngs/mersenne_2d.png" alt="Mersenne 2D Autocorrelation" />
+</p>
+
+<p>and the 3D plot (points look to be well distributed in the 3D unit cube).</p>
+
+<p align="center">
+<img src="/assets/prngs/mersenne_3d.gif" alt="Mersenne 3D Autocorrelation" />
+</p>
 
 <p>Whenever you see runif, assume the numbers are well uniformly-distributed using the Mersenne Twister algorithm. Now that we’ve understood a bit more how uniform random numbers are generated, I’ll later post about transforming these uniform random numbers into other forms of distributions, e.g. normally distributed.</p>
 
@@ -99,6 +121,6 @@ and the 3D plot (points look to be well distributed in the 3D unit cube).</p>
 
 <footer>
      <span></span> 
-    <a href="/darryls-pixels/rendering,/graphics/2018/05/27/hello-embree/">Hello embree »</a>
+    <a href="/rendering,/graphics/2018/05/27/hello-embree/">Hello embree »</a>
 </footer>
 
