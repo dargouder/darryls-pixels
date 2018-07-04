@@ -4,7 +4,7 @@
 <meta name="author" content="Darryl Gouder">
 <meta name="description" content="Blog about code and stuff...">
 <title> Pseudo Random Number Generation › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs/">
+<link rel="canonical" href="http://localhost:4000/mathematics,/monte-carlo/2018/07/09/prngs/">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/basic.css" rel="stylesheet">
@@ -23,16 +23,16 @@
 <main>
   <article>
     <header>
-      <h1><a href="/mathematics,/monte-carlo/2018/07/04/prngs/">Pseudo Random Number Generation</a></h1>
-      <time datetime="2018-07-04T10:30:00+01:00">July 4, 2018</time>
+      <h1><a href="/mathematics,/monte-carlo/2018/07/09/prngs/">Pseudo Random Number Generation</a></h1>
+      <time datetime="2018-07-09T10:30:00+01:00">July 9, 2018</time>
     </header>
-<p>In this post I’ll talk a bit about pseudo random number generation. This will be the first in an assortment of posts  regarding monte carlo methods.</p>
+<p>In this post I’ll talk a bit about pseudo random number generation. This will be the first in an assortment of posts regarding monte carlo methods.</p>
 
 <p>I’ll assume you have working knowledge of calculus and some probability and statistics.</p>
 
 <p>The most essential aspect of any form of monte carlo method is the generation of random numbers. Uniformly distributed random numbers on the interval [0,1] are what we’d like to generate first, as they are also what is required for the other types of distributions.</p>
 
-<p>Generating random numbers using a pseudo random number generator (PRNG) means that we generate a sequence of numbers, using some particular seed value (some arbitrary constant) that initializes the random number generation algorithm. We use the term pseudo, because the numbers generated are not truly random but generated deterministically and hence can be replicated if the same seed and the same constants in the function are used. This is ideal for us, so that we can replicate and debug our algorithms.</p>
+<p>Generating random numbers using a pseudo random number generator (PRNG) means that we generate a sequence of numbers, using some particular seed value (some arbitrary constant) that initializes the random number generation algorithm. We use the term pseudo, because the numbers generated are not truly random but generated deterministically and hence can be replicated if the same seed and the same constants in the function are used. This is ideal for us, so that we can replicate and debug our algorithms. We can think of these algorithms as generating a deterministic sequence which is based on a starting point.</p>
 
 <p>For this sequence to be considered to be of good quality, it should have certain properties, such as lack of predictibility (i.e. if we generate x values, and we can guess the next, this means the predctibility is possible) and equidistribution. For example if the mean of a large sequence of uniformly distributed numbers in the range [0,1] is not 0.5, then it is likely that something is wrong with the PRNG, given that due to the Law of Large Numbers, we would expect the arithmetic mean of this sequence to be similar to the expected mean (the expected mean being 0.5). We won’t focus on evaluating PRNGs and leave that to other minds, some useful links are http://pit-claudel.fr/clement/blog/how-random-is-pseudo-random-testing-pseudo-random-number-generators-and-measuring-randomness/ and http://simul.iro.umontreal.ca/testu01/tu01.html.</p>
 
@@ -62,13 +62,13 @@
 <img src="/assets/prngs/lcg_histogram.png" alt="LCG histogram" />
 </p>
 
-<p>It’s fair to say, this distribution looks good. Given that the generation of a value is dependent on the next let’s see if we can see a pattern by plotting them in a time series.</p>
+<p>It’s fair to say, the distribution of samples looks good. Given that the generation of a value is dependent on the next let’s see if we can see a pattern by plotting them in a time series.</p>
 
 <p align="center">
 <img src="/assets/prngs/lcg_time_series.png" alt="LCG Time Series" />
 </p>
 
-<p>That looks pretty random, so let’s plot them in series, taking pairs as cartesian coordinates (x_2k-1, x_2k). Plotting them in this manner is called autocorrelation</p>
+<p>That looks pretty random, so let’s plot them in series, taking pairs as cartesian coordinates (x_2k-1, x_2k). This type of test is known as autocorrelation.</p>
 
 <p align="center">
 <img src="/assets/prngs/lcg_2d.png" alt="LCG 2D Autocorrelation" />
@@ -82,7 +82,7 @@
 
 <p>The numbers are forming a line in 2D, a plane in 3D and this pattern continues in n-dimensions, where a n-dimensional hyperplane is formed for the n’th dimension. George Marsaglia identified this issue in 1968 and it is now know as the Marsaglia Theorem. He pointed out the worrying conclusion that all the papers that had used a LCG as their PRNG of choice might have wrong results. This highlights the importance of using a good PRNG.</p>
 
-<p>From now on we’ll use a PRNG of a higher quality, the Mersenne Twister. The more recent PCG PRNG should be better from what I’ve read about it on its website, and it’s what I use in my rendering system. Having said that, R’s runif (short for random uniform) command uses the Mersenne Twister algorithm, and for these posts it should suffice. PBRT 2 used to use Mersenne Twister and 3 uses PCG.</p>
+<p>From now on we’ll use a PRNG of a higher quality, the Mersenne Twister. The more recent <a href="http://www.pcg-random.org/">PCG PRNG</a> should be better f and it’s what I use in my rendering system. Having said that, R’s runif (short for random uniform) command uses the Mersenne Twister algorithm, and for these posts it should suffice. PBRT 2 used to use Mersenne Twister and PBRT V3 uses PCG.</p>
 
 <p>If we re-run the above tests using Mersenne Twister, we can see that, the histogram looks acceptable,</p>
 

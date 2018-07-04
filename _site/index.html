@@ -24,16 +24,16 @@
   
   <article>
     <header>
-      <h1><a href="/mathematics,/monte-carlo/2018/07/04/prngs/">Pseudo Random Number Generation</a></h1>
-      <time datetime="2018-07-04T10:30:00+01:00">July 4, 2018</time>
+      <h1><a href="/mathematics,/monte-carlo/2018/07/09/prngs/">Pseudo Random Number Generation</a></h1>
+      <time datetime="2018-07-09T10:30:00+01:00">July 9, 2018</time>
     </header>
-<p>In this post I’ll talk a bit about pseudo random number generation. This will be the first in an assortment of posts  regarding monte carlo methods.</p>
+<p>In this post I’ll talk a bit about pseudo random number generation. This will be the first in an assortment of posts regarding monte carlo methods.</p>
 
 <p>I’ll assume you have working knowledge of calculus and some probability and statistics.</p>
 
 <p>The most essential aspect of any form of monte carlo method is the generation of random numbers. Uniformly distributed random numbers on the interval [0,1] are what we’d like to generate first, as they are also what is required for the other types of distributions.</p>
 
-<p>Generating random numbers using a pseudo random number generator (PRNG) means that we generate a sequence of numbers, using some particular seed value (some arbitrary constant) that initializes the random number generation algorithm. We use the term pseudo, because the numbers generated are not truly random but generated deterministically and hence can be replicated if the same seed and the same constants in the function are used. This is ideal for us, so that we can replicate and debug our algorithms.</p>
+<p>Generating random numbers using a pseudo random number generator (PRNG) means that we generate a sequence of numbers, using some particular seed value (some arbitrary constant) that initializes the random number generation algorithm. We use the term pseudo, because the numbers generated are not truly random but generated deterministically and hence can be replicated if the same seed and the same constants in the function are used. This is ideal for us, so that we can replicate and debug our algorithms. We can think of these algorithms as generating a deterministic sequence which is based on a starting point.</p>
 
 <p>For this sequence to be considered to be of good quality, it should have certain properties, such as lack of predictibility (i.e. if we generate x values, and we can guess the next, this means the predctibility is possible) and equidistribution. For example if the mean of a large sequence of uniformly distributed numbers in the range [0,1] is not 0.5, then it is likely that something is wrong with the PRNG, given that due to the Law of Large Numbers, we would expect the arithmetic mean of this sequence to be similar to the expected mean (the expected mean being 0.5). We won’t focus on evaluating PRNGs and leave that to other minds, some useful links are http://pit-claudel.fr/clement/blog/how-random-is-pseudo-random-testing-pseudo-random-number-generators-and-measuring-randomness/ and http://simul.iro.umontreal.ca/testu01/tu01.html.</p>
 
@@ -61,7 +61,7 @@
 
 
     
-    <footer><a class="ghost" href="/mathematics,/monte-carlo/2018/07/04/prngs/">read more »</a></footer>
+    <footer><a class="ghost" href="/mathematics,/monte-carlo/2018/07/09/prngs/">read more »</a></footer>
     
   </article>
 
