@@ -70,25 +70,25 @@
 <p>N is the number of random numbers we want to generate. Let’s generate 1000 samples and plot a histogram to look at the distribution.</p>
 
 <p align="center">
-<img src="/assets/prngs/lcg_histogram.png" alt="LCG histogram" />
+<img src="http://localhost:4000/assets/prngs/lcg_histogram.png" alt="LCG histogram" />
 </p>
 
 <p>It’s fair to say, the distribution of samples looks good. Given that the generation of a value is dependent on the next let’s see if we can see a pattern by plotting them in a time series.</p>
 
 <p align="center">
-<img src="/assets/prngs/lcg_time_series.png" alt="LCG Time Series" />
+<img src="http://localhost:4000/assets/prngs/lcg_time_series.png" alt="LCG Time Series" />
 </p>
 
 <p>That looks pretty random, so let’s plot them in series, taking pairs as cartesian coordinates (x_2k-1, x_2k). This type of test is known as autocorrelation.</p>
 
 <p align="center">
-<img src="/assets/prngs/lcg_2d.png" alt="LCG 2D Autocorrelation" />
+<img src="http://localhost:4000/assets/prngs/lcg_2d.png" alt="LCG 2D Autocorrelation" />
 </p>
 
 <p>Well that’s interesting, pairs line up as lines… what if we plot them in 3D?</p>
 
 <p align="center">
-<img src="/assets/prngs/lcg_3d.gif" alt="LCG 3D Autocorrelation" />
+<img src="http://localhost:4000/assets/prngs/lcg_3d.gif" alt="LCG 3D Autocorrelation" />
 </p>
 
 <p>The numbers are forming a line in 2D, a plane in 3D and this pattern continues in n-dimensions, where a n-dimensional hyperplane is formed for the n’th dimension. George Marsaglia identified this issue in 1968 and it is now know as the Marsaglia Theorem. He pointed out the worrying conclusion that all the papers that had used a LCG as their PRNG of choice might have wrong results. This highlights the importance of using a good PRNG.</p>
@@ -98,25 +98,25 @@
 <p>If we re-run the above tests using Mersenne Twister, we can see that, the histogram looks acceptable,</p>
 
 <p align="center">
-<img src="/assets/prngs/mersenne_hist.png" alt="Mersenne Histogram" />
+<img src="http://localhost:4000/assets/prngs/mersenne_hist.png" alt="Mersenne Histogram" />
 </p>
 
 <p>so does the time series plot,</p>
 
 <p align="center">
-<img src="/assets/prngs/mersenne_time_series.png" alt="Mersenne Time Series" />
+<img src="http://localhost:4000/assets/prngs/mersenne_time_series.png" alt="Mersenne Time Series" />
 </p>
 
 <p>and the 2D plot (points look to be well distributed in the 2D plane)</p>
 
 <p align="center">
-<img src="/assets/prngs/mersenne_2d.png" alt="Mersenne 2D Autocorrelation" />
+<img src="http://localhost:4000/assets/prngs/mersenne_2d.png" alt="Mersenne 2D Autocorrelation" />
 </p>
 
 <p>and the 3D plot (points look to be well distributed in the 3D unit cube).</p>
 
 <p align="center">
-<img src="/assets/prngs/mersenne_3d.gif" alt="Mersenne 3D Autocorrelation" />
+<img src="http://localhost:4000/assets/prngs/mersenne_3d.gif" alt="Mersenne 3D Autocorrelation" />
 </p>
 
 <p>Whenever you see runif, assume the numbers are well uniformly-distributed using the Mersenne Twister algorithm. Now that we’ve understood a bit more how uniform random numbers are generated, I’ll later post about transforming these uniform random numbers into other forms of distributions, e.g. normally distributed.</p>
