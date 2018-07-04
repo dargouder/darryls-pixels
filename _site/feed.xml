@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-04T16:31:20+01:00</updated><id>http://localhost:4000/</id><title type="html">Darryl’s Pixels</title><subtitle>Blog about code and stuff...</subtitle><author><name>Darryl Gouder</name></author><entry><title type="html">Pseudo Random Number Generation</title><link href="http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs/" rel="alternate" type="text/html" title="Pseudo Random Number Generation" /><published>2018-07-04T10:30:00+01:00</published><updated>2018-07-04T10:30:00+01:00</updated><id>http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs</id><content type="html" xml:base="http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs/">&lt;p&gt;In this post I’ll talk a bit about pseudo random number generation. This will be the first in an assortment of posts regarding monte carlo methods.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-04T16:33:22+01:00</updated><id>http://localhost:4000/</id><title type="html">Darryl’s Pixels</title><subtitle>Blog about code and stuff...</subtitle><author><name>Darryl Gouder</name></author><entry><title type="html">Pseudo Random Number Generation</title><link href="http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs/" rel="alternate" type="text/html" title="Pseudo Random Number Generation" /><published>2018-07-04T10:30:00+01:00</published><updated>2018-07-04T10:30:00+01:00</updated><id>http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs</id><content type="html" xml:base="http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs/">&lt;p&gt;In this post I’ll talk a bit about pseudo random number generation. This will be the first in an assortment of posts regarding monte carlo methods.&lt;/p&gt;
 
 &lt;p&gt;I’ll assume you have working knowledge of calculus and some probability and statistics.&lt;/p&gt;
 
@@ -269,7 +269,7 @@
 &lt;p&gt;I’m using lodepng to write the image to file, nothing too complex going on here, and then we get this!&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-&lt;img src=&quot;/assets/hello-embree/hello.png&quot; alt=&quot;Hello embree&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/assets/hello-embree/hello.png&quot; alt=&quot;Hello embree&quot; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&quot;release-scene&quot;&gt;Release scene&lt;/h3&gt;
