@@ -18,6 +18,7 @@ navigation:
   - index.html
   - archive.html
   - about.md
+  - solstice.md
 
 comments:
   disqus: "darrylgouder"
