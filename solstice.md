@@ -21,7 +21,7 @@ The blog posts I'll write sometimes will have to do with Solstice. I usually try
 #### Shapes
 
 * Triangles
-* Spheres
+* Spheres (currently unavailable due to embree)
 
 #### Mesh import:
 
@@ -45,6 +45,14 @@ The blog posts I'll write sometimes will have to do with Solstice. I usually try
 * Naive BVH
 * embree-based BVH
 
+#### Materials
+
+* Lambert
+* Glass (currently broken)
+* Metal (currently broken)
+
+I've had to break a few things when I was on a big cleaning spree and adding in embree, hopefully I can manage to get things back to normal soon.
+
 ### Future work
 
 There's a ton of work I intend to do. I'm still polishing some things and removing bugs, but these are some of the features I intend to implement:
@@ -59,9 +67,14 @@ There's a ton of work I intend to do. I'm still polishing some things and removi
 
 ### Images
 
-Here's some images from what I've rendered so far.
+Here's some images from what I've rendered so far, more images are incoming when I start implementing the cooler stuff
 
 <p align="center">
 <img src="{{ site.url }}/assets/solstice/bunny.png" alt="Cornell box with bunny - all diffuse">
 </p>
 
+The white pixels are making me sad
+
+<p align="center">
+<img src="{{ site.url }}/assets/solstice/sibenik.png" alt="Noisy sibenik with white pixels">
+</p>
