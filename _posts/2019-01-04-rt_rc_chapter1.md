@@ -1,6 +1,6 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1"
-date:   2019-01-07 10:30
+date:   2019-01-04 10:30
 categories: rendering, mathematics, monte-carlo
 ---
 This blog series is a set of notes that expand on Dr Shirley's "Ray Tracing The Rest of Your Life" book. The book is short and sweet, introducing all the tools that one will need in their arsenal to build a sophisticated ray tracer. I found it very refreshing in terms of simplifying otherwise esoteric concepts and bridging the gap between simple mathematical concepts and how they are used in ray tracing. 
