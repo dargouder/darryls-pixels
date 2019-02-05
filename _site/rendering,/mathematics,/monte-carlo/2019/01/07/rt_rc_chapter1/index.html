@@ -3,15 +3,15 @@
 <meta charset="utf-8">
 <meta name="author" content="Darryl Gouder">
 <meta name="description" content="Blog about code and stuff...">
-<title> Home › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/">
+<title> Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1 › Darryl's Pixels</title>
+<link rel="canonical" href="http://localhost:4000/rendering,/mathematics,/monte-carlo/2019/01/07/rt_rc_chapter1/">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/basic.css" rel="stylesheet">
 <link href="/highlight.css" rel="stylesheet">
 <link href="/index.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
-
+<script src="//darrylgouder.disqus.com/embed.js" async></script>
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <header>
@@ -21,41 +21,8 @@
     <div><a href="https://twitter.com/dargouder"><i class="fa fa-twitter"></i></a><a href="https://github.com/dargouder"><i class="fa fa-github"></i></a><a href="mailto:dargouder@gmail.com"><i class="fa fa-envelope"></i></a></div>
   </nav>
 </header>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <main>
-  
-  <article>
-    <header>
-      <h1><a href="/mathematics,/rendering,/graphics/2028/08/15/radiometry_rend_eq/">Measuring the Rendering Equation</a></h1>
-      <time datetime="2028-08-15T10:30:00+01:00">August 15, 2028</time>
-    </header>
-<p>The root concept of all computer graphics is the propogation light, and how we describe and measure its propogration throughout a scene. In the case of physically based rendering, physics is our ground truth, therefore the quantities used to measure light and the ideas on how the light behaves under arbitrary conditions are an attractive and elegant way of simulating light transport. At the root all these physical ideas is radiometry.</p>
-
-<p>This is a topic that I initially did not hold as much appreciation as I should have when I first started out in computer graphics, however I’ve come to realize that understanding radiometry well will lead to a more intuitive understanding of many different concepts in PBR. In this blog post, I’ll use various sources to write at length about the different radiometric quantities, with examples and as many visual cues as possible.</p>
-
-<p>Light is the visible part of the electromagnetic spectrum and therefor subject to all the ideas that we have regarding the behaviour of electromagnetic radiation. Most of us are familiar with the speed of light, approximately measured at 299,792,458 metres per second in a vacuum. This value is a commonly referred to as c and is part of a special group known as universal constants - a value which is constant both in the universe and in time.</p>
-
-<p>Light carries some form of energy, the unit of which we measure in Joules. We refer to this energy as radiant energy. The function that measures the amount of energy generated is in terms of the wavelength of the light. (write equation) states that the energy carried by a photon (which we can consider as 1 unit of light) is equal to the speed of light multiplied by Planck’s constant, divided by the wavelength. Planck’s constant is another one of these universal constants. (Talk a bit about Planck’s constant).</p>
-
-<p>Although energy is transmitted over an amount of time, when we’e rendering, we’re measuring light at one point at a time - and to do so we need to take the differential energy per differential time, the resulting units being joules per second. This value is known as radiant flux, or power. It is the total amount of energy passing through a surface or region of space per unit time.</p>
-
-<p>Now that we have radiant flux, we need to measure how much flux is arriving at or leaving a particular surface area, per 1 unit of time. This value is known as irradiance, if the area is receiving light, or radiant exitance if it is leaving it. The measurements of this will be W/m^2, we’re taking the differential power per differential area at a point.</p>
-
-<p>Before we measure radiance, we need to define the idea of a solid angle. We are accustomed to the idea of measuring angles about a point, in 2D, where a full revolution of 360 degrees results in a circle. An extension of this, whereby we define an angle with respect to a plane, results in a sphere covering all the possible angles about a point. We measure planar angles in radians - and the spherical angles in steradians, which is the total area subtended by the object projected on the unit sphere surrounding the point.</p>
-
-<p>Radiance is the most important radiometric quantity. Whereas irradiance and radiant exitance gave us the differential power per differential area at a point p, the direction was not at all specified.</p>
-
-<p>In this post we’ll re-visit radiometry. I’ve been re-reading the radiometry chapters from Advanced Global Illumination and PBRT. And I had an 11 hour flight which I felt was the appropriate time to dive into the Veach thesis. For those unfamiliar with the Veach thesis, it’s Eric Veach’s PhD thesis titled Robust Monte Carlo Methods for Light Transport Simulation. It introduces the ideas of Multiple Importance Sampling, Bidirectional Path Tracing and Metropolis Light Transport, and is a must read for anyone interested in rendering and light transport. Dr. Veach does an excellent job of building up the foundational knowledge required to understamd thsese concepts.</p>
-
-<p>I’ll talk a bit about the radiometric quantities and borrow from many different sources to explain and visualize as best I can each one.</p>
-
-<p>LOOK AT THE 2D GLOBAL ILLUMINATION PAPER BY JAROSZ.</p>
-
-
-    
-    <footer><a class="ghost" href="/mathematics,/rendering,/graphics/2028/08/15/radiometry_rend_eq/">read more »</a></footer>
-    
-  </article>
-
   <article>
     <header>
       <h1><a href="/rendering,/mathematics,/monte-carlo/2019/01/07/rt_rc_chapter1/">Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1</a></h1>
@@ -134,19 +101,21 @@ What is the probability that I will get a heads, when I flip a fair coin?
 <p>The careful selection of samples to minimize variance is an ongoing area of research, that is an absolutely fascinating subject and one of my favourite topics in CG. Dr. Shirley expands a bit on this is in this blog post: <a href="http://psgraphics.blogspot.com/2018/10/flavors-of-sampling-in-ray-tracing.html" target="_blank">Flavors of sampling in ray tracing</a>.
 Some more links from me about this topic. I’ll re-visit this at the end of Chapter 2, once we define the Monte Carlo Integral.</p>
 
+<p>The next post will be on Chapter 2, where I’ll delve a bit more into Monte Carlo theory and we’ll start performing some more interesting computations.</p>
+
+<p>If you have any questions and feedback, feel free to comment or contact me via twitter/email.</p>
 
     
-    <footer><a class="ghost" href="/rendering,/mathematics,/monte-carlo/2019/01/07/rt_rc_chapter1/">read more »</a></footer>
+    
+    <hr><div id="disqus_thread"></div>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
   </article>
-
 </main>
 
+
 <footer>
-    <a  class="disabled" >« newer posts</a>
-    <span class="paginate">page 1 of 2</span>
-    <a  class="gray" href="/page2" >older posts »</a>
+    <a href="/mathematics,/rendering,/graphics/2028/08/15/radiometry_rend_eq/">« Measuring the Rendering Equation</a>
+    <a href="/mathematics,/monte-carlo/2018/07/04/prngs/">Pseudo Random Number Generation »</a>
 </footer>
-
-
 

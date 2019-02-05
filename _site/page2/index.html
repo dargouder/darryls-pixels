@@ -3,15 +3,15 @@
 <meta charset="utf-8">
 <meta name="author" content="Darryl Gouder">
 <meta name="description" content="Blog about code and stuff...">
-<title> Pseudo Random Number Generation › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/mathematics,/monte-carlo/2018/07/04/prngs/">
+<title> Home › Darryl's Pixels</title>
+<link rel="canonical" href="http://localhost:4000/page2/">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/basic.css" rel="stylesheet">
 <link href="/highlight.css" rel="stylesheet">
 <link href="/index.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
-<script src="//darrylgouder.disqus.com/embed.js" async></script>
+
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <header>
@@ -21,8 +21,8 @@
     <div><a href="https://twitter.com/dargouder"><i class="fa fa-twitter"></i></a><a href="https://github.com/dargouder"><i class="fa fa-github"></i></a><a href="mailto:dargouder@gmail.com"><i class="fa fa-envelope"></i></a></div>
   </nav>
 </header>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <main>
+  
   <article>
     <header>
       <h1><a href="/mathematics,/monte-carlo/2018/07/04/prngs/">Pseudo Random Number Generation</a></h1>
@@ -71,69 +71,40 @@
 
 <p>N is the number of random numbers we want to generate. Let’s generate 1000 samples and plot a histogram to look at the distribution.</p>
 
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/lcg_histogram.png" alt="LCG histogr§am" />
-</p>
-
-<p>It’s fair to say, the distribution of samples looks good. Given that the generation of a value is dependent on the next let’s see if we can see a pattern by plotting them in a time series.</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/lcg_time_series.png" alt="LCG Time Series" />
-</p>
-
-<p>That looks pretty random, so let’s plot them in series, taking pairs as cartesian coordinates (x_2k-1, x_2k). This type of test is known as <a href="https://en.wikipedia.org/wiki/Autocorrelation" target="_blank">autocorrelation</a>.</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/lcg_2d.png" alt="LCG 2D Autocorrelation" />
-</p>
-
-<p>Well that’s interesting, pairs line up as lines… what if we plot them in 3D?</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/lcg_3d.gif" alt="LCG 3D Autocorrelation" />
-</p>
-
-<p>The numbers are forming a line in 2D, a plane in 3D and this pattern continues in n-dimensions, where a n-dimensional hyperplane is formed for the n’th dimension. George Marsaglia identified this issue in 1968 and it is now know as the Marsaglia Theorem. He pointed out the worrying conclusion that all the papers that had used a LCG as their PRNG of choice might have wrong results. This highlights the importance of using a good PRNG.</p>
-
-<p>From now on we’ll use a PRNG of a higher quality, the Mersenne Twister. I won’t go into its implementation, it’s a lot more sophisticated and robust than the LCG. The more recent <a href="http://www.pcg-random.org/" target="_blank">PCG PRNG</a> is better than Mersenne and it’s what I use in my rendering system. Having said that, R’s runif (short for random uniform) command uses the Mersenne Twister algorithm, and for these posts it should suffice. PBRT 2 used to use Mersenne Twister and PBRT V3 uses PCG.</p>
-
-<p>If we re-run the above tests using Mersenne Twister, we can see that, the histogram looks acceptable,</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/mersenne_hist.png" alt="Mersenne Histogram" />
-</p>
-
-<p>so does the time series plot,</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/mersenne_time_series.png" alt="Mersenne Time Series" />
-</p>
-
-<p>and the 2D plot (points look to be well distributed in the 2D plane)</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/mersenne_2d.png" alt="Mersenne 2D Autocorrelation" />
-</p>
-
-<p>and the 3D plot (points look to be well distributed in the 3D unit cube).</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/prngs/mersenne_3d.gif" alt="Mersenne 3D Autocorrelation" />
-</p>
-
-<p>Whenever you see runif, assume the numbers are well uniformly-distributed using the Mersenne Twister algorithm. Now that we’ve understood a bit more how uniform random numbers are generated, I’ll later post about transforming these uniform random numbers into other forms of distributions, e.g. normally distributed.</p>
 
     
-    
-    <hr><div id="disqus_thread"></div>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    <footer><a class="ghost" href="/mathematics,/monte-carlo/2018/07/04/prngs/">read more »</a></footer>
     
   </article>
+
+  <article>
+    <header>
+      <h1><a href="/rendering,/graphics/2018/05/27/hello-embree/">Hello embree</a></h1>
+      <time datetime="2018-05-27T10:30:00+01:00">May 27, 2018</time>
+    </header>
+<p>I’ve been slowly developing a raytracer which has been a lot of fun and a great learning experience both from a technical standpoint and the theoretical side of physically-based rendering.</p>
+
+<p>I’m at a point now where I am importing meshes of a larger nature, and I was not content with my BVH implementation. As much as I would like to read the state of the art papers on BVH construction and traversal and implement them myself, I’ve decided to opt to use embree instead. I would rather focus on the light transport part and focus on getting prettier images and getting them to converge quicker from an algorithmic standpoint. As a friend of mine said, I have to pick my battles, and embree is going to do a lot of heavy lifting for me so that I can focus more on what I’d like to write.</p>
+
+<p>Setting up embree with CMake is quite easy <a href="https://bitbucket.org/dgouder/embree-renderer/src/master/" target="_blank">I’ve got the full source code of this post available here</a>	, and I won’t go into details into how to set it up - the CMakeLists.txt is quite self explanatory and I’ve added as much comments as I can.</p>
+
+<p>As great and as fleshed out the samples are, there is a lot of boilerplate code, written in different header files. This put me off initially but with a bit of digging, and building the samples with a powerful IDE went long way in help way in helping me zip around the API and the headers.</p>
+
+<p>I thought it would be interesting to write the simplest thing I can think of with embree, a hello world ray tracing example if you will, I’ll explain below what we’ll do.</p>
+
+
+    
+    <footer><a class="ghost" href="/rendering,/graphics/2018/05/27/hello-embree/">read more »</a></footer>
+    
+  </article>
+
 </main>
 
-
 <footer>
-    <a href="/rendering,/mathematics,/monte-carlo/2019/01/07/rt_rc_chapter1/">« Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1</a>
-    <a href="/rendering,/graphics/2018/05/27/hello-embree/">Hello embree »</a>
+    <a  class="gray" href="/" >« newer posts</a>
+    <span class="paginate">page 2 of 2</span>
+    <a  class="disabled" >older posts »</a>
 </footer>
+
+
 

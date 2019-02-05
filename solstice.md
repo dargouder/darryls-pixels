@@ -2,19 +2,17 @@
 title: "Solstice"
 ---
 
-Solstice is a multiplatform physically-based renderer, written in C++. The objective of this project is for self-teaching goals, given my interest in ray tracing techniques.
+Solstice is my multiplatform physically-based renderer, written in C++. The objective of this project is for self-teaching goals, given my interest in ray tracing techniques.
 
 The project has started and stopped many times, this current version has been ongoing for over a year and a half.
 
 This version started from Peter Shirley's Ray Tracing in One Weekend books, and has continued with me changing chunks and pieces to improve it, such as the implementation of a Stratified Sampler, texture mapping, triangular meshes and most recently the addition of embree.
 
-TBB is used for tile-based parallel computation.
-
-The recent addition of embree has resulted in a lot of dirty code which I'm still clearning. 
+TBB is used for screen tile based parallel computation. and embree is used for accelerated ray intersection tests.
 
 My objective is to have a working simple version of all the different parts of a renderer. Once I have a working example of each section, I'll start making more advanced implementations of each e.g. I'll write more sophisticated samplers, integrators, add so forth.
 
-The blog posts I'll write sometimes will have to do with Solstice. I usually try some new feature in a sandbox outside it and then move it into it.
+The blog posts I will write sometimes will have to do with Solstice. I usually try some new feature in a sandbox outside it and then move it into it.
 
 ### Current features
 
@@ -42,14 +40,14 @@ The blog posts I'll write sometimes will have to do with Solstice. I usually try
 
 #### Acceleration structure:
 
-* Naive BVH
+* Naive BVH (broken)
 * embree-based BVH
 
 #### Materials
 
 * Lambert
 * Glass (currently broken)
-* Metal (currently broken)
+* Metal 
 
 I've had to break a few things when I was on a big cleaning spree and adding in embree, hopefully I can manage to get things back to normal soon.
 

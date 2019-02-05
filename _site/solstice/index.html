@@ -13,6 +13,7 @@
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
 
 
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <header>
   <h1><a href="">Darryl's Pixels</a></h1>
   <nav>
@@ -20,25 +21,24 @@
     <div><a href="https://twitter.com/dargouder"><i class="fa fa-twitter"></i></a><a href="https://github.com/dargouder"><i class="fa fa-github"></i></a><a href="mailto:dargouder@gmail.com"><i class="fa fa-envelope"></i></a></div>
   </nav>
 </header>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <main>
   <article>
     <header>
       <h1><a href="/solstice/">Solstice</a></h1>
       <time datetime=""></time>
     </header>
-<p>Solstice is a multiplatform physically-based renderer, written in C++. The objective of this project is for self-teaching goals, given my interest in ray tracing techniques.</p>
+<p>Solstice is my multiplatform physically-based renderer, written in C++. The objective of this project is for self-teaching goals, given my interest in ray tracing techniques.</p>
 
 <p>The project has started and stopped many times, this current version has been ongoing for over a year and a half.</p>
 
 <p>This version started from Peter Shirley’s Ray Tracing in One Weekend books, and has continued with me changing chunks and pieces to improve it, such as the implementation of a Stratified Sampler, texture mapping, triangular meshes and most recently the addition of embree.</p>
 
-<p>TBB is used for tile-based parallel computation.</p>
-
-<p>The recent addition of embree has resulted in a lot of dirty code which I’m still clearning.</p>
+<p>TBB is used for screen tile based parallel computation. and embree is used for accelerated ray intersection tests.</p>
 
 <p>My objective is to have a working simple version of all the different parts of a renderer. Once I have a working example of each section, I’ll start making more advanced implementations of each e.g. I’ll write more sophisticated samplers, integrators, add so forth.</p>
 
-<p>The blog posts I’ll write sometimes will have to do with Solstice. I usually try some new feature in a sandbox outside it and then move it into it.</p>
+<p>The blog posts I will write sometimes will have to do with Solstice. I usually try some new feature in a sandbox outside it and then move it into it.</p>
 
 <h3 id="current-features">Current features</h3>
 
@@ -46,7 +46,7 @@
 
 <ul>
   <li>Triangles</li>
-  <li>Spheres</li>
+  <li>Spheres (currently unavailable due to embree)</li>
 </ul>
 
 <h4 id="mesh-import">Mesh import:</h4>
@@ -77,9 +77,19 @@
 <h4 id="acceleration-structure">Acceleration structure:</h4>
 
 <ul>
-  <li>Naive BVH</li>
+  <li>Naive BVH (broken)</li>
   <li>embree-based BVH</li>
 </ul>
+
+<h4 id="materials">Materials</h4>
+
+<ul>
+  <li>Lambert</li>
+  <li>Glass (currently broken)</li>
+  <li>Metal</li>
+</ul>
+
+<p>I’ve had to break a few things when I was on a big cleaning spree and adding in embree, hopefully I can manage to get things back to normal soon.</p>
 
 <h3 id="future-work">Future work</h3>
 
@@ -96,12 +106,17 @@
 
 <h3 id="images">Images</h3>
 
-<p>Here’s some images from what I’ve rendered so far.</p>
+<p>Here’s some images from what I’ve rendered so far, more images are incoming when I start implementing the cooler stuff</p>
 
 <p align="center">
 <img src="http://localhost:4000/assets/solstice/bunny.png" alt="Cornell box with bunny - all diffuse" />
 </p>
 
+<p>The white pixels are making me sad</p>
+
+<p align="center">
+<img src="http://localhost:4000/assets/solstice/sibenik.png" alt="Noisy sibenik with white pixels" />
+</p>
 
     
     
