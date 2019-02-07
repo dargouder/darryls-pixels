@@ -4,7 +4,7 @@ date:   2019-01-07 10:30
 categories: rendering
 ---
 
-Welcome back! If you're joining from the 1st post, you can skip ahead and start reading from the Chapter 2 title. If not, here's a [link](https://dargouder.github.io/darryls-pixels/rendering,/mathematics,/monte-carlo/2019/01/04/rt_rc_chapter1/){:target="_blank"} to the first post as there's some information in the beginning about this blog series.
+Welcome back! If you're joining from the 1st post, you can skip ahead and start reading from the Chapter 2 title. If not, here's a [link](https://dargouder.github.io/darryls-pixels/rendering/2019/01/04/rt_rc_chapter1/){:target="_blank"} to the first post as there's some information in the beginning about this blog series.
 
 # Chapter 2: One Dimensional MC Integration
 
