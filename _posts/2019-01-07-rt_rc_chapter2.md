@@ -1,7 +1,7 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 2"
-date:   2019-01-11 10:30
-categories: rendering, mathematics, monte-carlo
+date:   2019-01-07 10:30
+categories: rendering
 ---
 
 Welcome back! If you're joining from the 1st post, you can skip ahead and start reading from the Chapter 2 title. If not, here's a [link](https://dargouder.github.io/darryls-pixels/rendering,/mathematics,/monte-carlo/2019/01/04/rt_rc_chapter1/){:target="_blank"} to the first post as there's some information in the beginning about this blog series.
@@ -33,7 +33,7 @@ $$ x_i $$ are uniformly distributed random numbers between 0 and 1, and $$ N $$ 
 
 <p align="center" style="color:red;">
 <b>
-Read the book right up until he proposes making his own pdf. I’ll lengthen the explanation and drive in a bit of probability, enough to show you the ropes but not enough to bore you (hopefully).
+Read the book right up until he proposes making his own PDF. I’ll lengthen the explanation and drive in a bit of probability, enough to show you the ropes but not enough to bore you (hopefully).
 </b>
 </p>
 
@@ -51,7 +51,7 @@ To exemplify these terms, in our statistical experiment we are going to toss a c
 * $$ P(X) $$ will be the probability of getting 0, 1 or 2 heads.
 * $$ P(X = x) $$ will be a particular sequence of coin tosses, such as $$ TT $$ or $$ TH $$.
 
-The cumulative distribution function (CDF) and the probability mass/density function (pmf/pdf) are the 2 pillars of understanding the nature of a random variable. The reason I used mass/density is because mass is used when we are describing a discrete distribution, and density is used in the continuous case. In this example, it’s the pmf (a coin toss is a discrete experiment) that I’ll be talking about, however the same ideas hold for the pdf.
+The cumulative distribution function (CDF) and the probability mass/density function (pmf/PDF) are the 2 pillars of understanding the nature of a random variable. The reason I used mass/density is because mass is used when we are describing a discrete distribution, and density is used in the continuous case. In this example, it’s the pmf (a coin toss is a discrete experiment) that I’ll be talking about, however the same ideas hold for the PDF.
 
 This is the CDF of the experiment above:
 
@@ -104,10 +104,15 @@ The Inverse Transform method warrants its own blog post so I won’t go into det
 </b>
 </p>
 
-We have computed a Monte Carlo estimation of an integral, and now we’ve computed the inverse cdf of a pdf, which means we can transform our uniform random numbers into the pdf that we selected. How do we connect these 2 together to get a better estimation of our Monte Carlo integral? Importance sampling!
+We have computed a Monte Carlo estimation of an integral, and now we’ve computed the inverse cdf of a PDF, which means we can transform our uniform random numbers into the PDF that we selected. If you recall, we said that we draw our samples from a uniform distribution from 1 to 0 in our original definition of the Monte Carlo estimator. The PDF of this estimator is $$ \frac{1}{1-0} $$ which is $$ 1 $$. The more general Monte Carlo estimator definition is actually this:
 
-Do you remember I mentioned variance in Chapter 1? Importance sampling will help us in estimating the integral with reduced variance (if a suitable pdf is chosen). Choosing a good pdf is an ongoing form of research. For our integral, the pdf Dr Shirley’s picked $$ \frac{1}{r} $$.
-The idea of importance sampling is to draw samples from a function with a pdf that has a shape that matches the function we’re trying to estimate, and weights each sample by the pdf. For the moment, we’ve been drawing samples from the uniform distribution, but thanks to the inverse transform method, we’re now using these uniform numbers and transforming them to match the new pdf. We’ll then compute our original integral with these new random variables and divide by the new pdf.
+$$
+ \frac{1}{N} \sum_{i=0}^{N-1} \frac{f(X_i)}{p(X_i)}
+$$
+
+Where $$ p(X_i) $$ is the PDF from which the samples are drawn. By selecting a PDF that matches the shape of the function that we are trying to estimate, we are weighting the samples so as to reduce the variance. This is known as Importance Sampling! Choosing a good PDF is an ongoing form of research. For our integral, the PDF Dr Shirley’s picked is $$ \frac{1}{r} $$.
+
+For the moment, we’ve been drawing samples from the uniform distribution, but thanks to the inverse transform method, we’re now using these uniform numbers and transforming them to match the new PDF. We’ll then compute our original integral with these new random variables and divide by the new PDF.
 
 <p align="center" style="color:red;">
 <b>
@@ -115,13 +120,7 @@ Now would be a good time to finish the chapter.
 </b>
 </p>
 
-The importance sampling function is defined as:
-
-$$
-E[f(X)] \approx \frac{1}{N} \sum_{i=1}^N \frac{f(X_j)}{g(X_j)} h(X_j)
-$$
-
-where $$ f(X_j) $$ is the computed function, $$g(X_j)$$ is the PDF of the distribution from which $$ X_j $$ is drawn from.
+I don't really have much to add to that. If you feel more mathematically inclined, I would suggest you have a look at [PBRT Chapter 13 ](http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html){:target="_blank"}
 
 If you have any questions and feedback, feel free to comment or contact me via twitter/email.
 

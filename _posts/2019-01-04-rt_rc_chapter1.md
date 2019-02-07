@@ -1,13 +1,13 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1"
 date:   2019-01-04 10:30
-categories: rendering, mathematics, monte-carlo
+categories: rendering
 ---
 This blog series is a set of notes that expand on Dr Shirley's "Ray Tracing The Rest of Your Life" book. The book is compact, introducing all the tools that one will need in their arsenal to build a sophisticated ray tracer. I found it very refreshing in terms of simplifying otherwise esoteric concepts and bridging the gap between simple mathematical concepts and their application in ray tracing. 
 
 My journey through the book raised many questions, which Dr Shirley was very helpful in answering and explaining. Along the way I read many different articles and saw different videos to understand things. I am probably not the only person who needed help understanding things and won't be the last, so I thought it would be a good idea to share the information that I gathered.
 
-The format of this post is unconventional  - you should have a copy of [the book](http://www.realtimerendering.com/raytracing/Ray%20Tracing_%20the%20Rest%20of%20Your%20Life.pdf){:target="_blank"} (ideally the pdf as it is the most recent updated) open in another tab. I’ll try to guide you as best as I can throughout the book by asking you to look at the book and come back when you reach a certain point.
+The format of this post is unconventional  - you should have a copy of [the book](http://www.realtimerendering.com/raytracing/Ray%20Tracing_%20the%20Rest%20of%20Your%20Life.pdf){:target="_blank"} (ideally the PDF as it is the most recent updated) open in another tab. I’ll try to guide you as best as I can throughout the book by asking you to look at the book and come back when you reach a certain point.
 <p align="center" style="color:red;">
 <b>These statements will be in bold and red! </b></p>
 
@@ -55,7 +55,7 @@ $$
 
  The reason why this works is a theorem known as the **Law of Large Numbers**. The weak law of large numbers states that if we take a number of samples and average them, it will *PROBABLY* converge to the expected value. The strong law of large numbers states that it will converge *ALMOST SURELY* (with probability 1). We’re not going to go down this rabbit hole, the one of interest to us in the weak law.
 
-An important term that we should define is **variance**. In our example, we were trying to compute $$ \pi $$, which makes this  the mean we’re trying to estimate. The variance, in very informal language, measures how spread out our sample computations are from this mean. The lower the variance, the less spread out the samples are and the more accurate our computed mean is to the expected value (the expected value is also known as the mean). If we have high variance, this means our samples are spread out, and we might be using an ineffective function to computationally find our mean.
+An important term that we should define is **variance**. In our example, we were trying to compute $$ \pi $$, which makes this  the mean we’re trying to estimate. The variance, in very informal language, measures how spread out our sample computations are from this mean. The lower the variance, the less spread out the samples are and the more accurate our computed mean is to the expected value (the expected value is also known as the mean). If we have high variance, this means our samples are spread out, and we might be using an ineffective function to computationally find our mean. There are ways to quantify variance which are useful for estimating the error of our Monte Carlo techniques, however I think it would not be fruitful for now to discuss those.
 
 The **Law of Diminishing Returns** explains the idea that the more samples we take, the more we need than before, to get an accurate answer.  In terms of numbers, if you want to half the error that you’re getting, you’ll need to quadruple the amount of samples. Here is how the error between our estimated value of $$ \pi $$ and actual $$ \pi $$ decreases as we compute more samples.
 

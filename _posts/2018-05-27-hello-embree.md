@@ -1,7 +1,7 @@
 ---
 title:  "Hello embree"
 date:   2018-05-27 10:30
-categories: rendering, graphics
+categories: rendering
 ---
 
 I've been slowly developing a raytracer which has been a lot of fun and a great learning experience both from a technical standpoint and the theoretical side of physically-based rendering.
