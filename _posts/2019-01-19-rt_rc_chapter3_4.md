@@ -10,6 +10,8 @@ Welcome back! If you're joining from the 2nd post, you can skip ahead and start 
 
 # Chapter 4: Light Scattering
 
+# Chapter 5 Importance Sampling Materials
+
 Monte Carlo is widely used to solve integrals of higher dimensions, where an analytical method is not possible, or other integral computational methods are intractable. Dr. Shirley selects a simple integral to show how effective Monte Carlo integration is. 
 
 <p align="center" style="color:red;">
