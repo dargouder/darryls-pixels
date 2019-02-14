@@ -51,9 +51,17 @@ $$
 
 * $$ E[X] $$ is the expected value of $$ X $$, our statistical experiment.
 * $$ x_i $$ is the result of each sample that we compute of our function
-* $$ p_i $$ is the probability weight of this sample.
+* $$ p_i $$ is the probability weight of this sample. They must sum up to 1.
 
- The reason why this works is a theorem known as the **Law of Large Numbers**. The weak law of large numbers states that if we take a number of samples and average them, it will *PROBABLY* converge to the expected value. The strong law of large numbers states that it will converge *ALMOST SURELY* (with probability 1). We’re not going to go down this rabbit hole, the one of interest to us in the weak law.
+I'll use another example rather than a coin toss to tie with the above equation. If we had a fair 6-sided dice, the expected value would be:
+
+$$
+E[X] = \sum_{i=1}^k x_i p_i = \frac{1}{6} + \frac{2}{6} + \frac{3}{6} +  \frac{4}{6} + \frac{5}{6} + \frac{6}{6} = 3.5
+$$ 
+
+where $$ x_i $$ was the dice roll and $$ \frac{1}{6} was the probability weight. If dice wasn't fair, the weights would be different - that doesn't matter as long as they sum up to one.
+
+Back to our original monte carlo example, the reason why this works is a theorem known as the **Law of Large Numbers**. The weak law of large numbers states that if we take a number of samples and average them, it will *PROBABLY* converge to the expected value. The strong law of large numbers states that it will converge *ALMOST SURELY* (with probability 1). We’re not going to go down this rabbit hole, the one of interest to us in the weak law.
 
 An important term that we should define is **variance**. In our example, we were trying to compute $$ \pi $$, which makes this  the mean we’re trying to estimate. The variance, in very informal language, measures how spread out our sample computations are from this mean. The lower the variance, the less spread out the samples are and the more accurate our computed mean is to the expected value (the expected value is also known as the mean). If we have high variance, this means our samples are spread out, and we might be using an ineffective function to computationally find our mean. There are ways to quantify variance which are useful for estimating the error of our Monte Carlo techniques, however I think it would not be fruitful for now to discuss those.
 
@@ -63,18 +71,20 @@ The **Law of Diminishing Returns** explains the idea that the more samples we ta
 <img src="{{ site.url }}/assets/posts/rt_rc_chapter1/pi_estimate.png" alt=" $$ \pi $$ Estimate error">
 </p>
 
-This doesn't hold a lot of significance for now but it's good to keep this in mind.
+Notice how after sample 400, the error doesn't increase that much. This doesn't hold a lot of significance for now but it's good to keep this in mind.
 
 <p align="center" style="color:red;">
 <b>Now would be a good time to go read the rest of the chapter.</b>
 </p>
 
-Stratification is a way of intelligently placing your samples to estimate your function better. If you look at my blog post about random numbers, I show that a good PRNG (Pseudo-Random Number Generator) should generate uniformly distributed points. However to ensure true uniformity, without having clustered samples, we stratify the samples we take. 
+Stratification is a way of intelligently placing your samples to estimate your function better. If you look at my [blog post](https://dargouder.github.io/darryls-pixels/mathematics/2018/07/04/prngs/){:target="_blank"} about random numbers, I show that a good PRNG (Pseudo-Random Number Generator) should generate uniformly distributed points. When you're dealing with multiple dimensions a PRNG's inherent randomness isn't enough. Think of dimensions this way: you need 2 uniform random numbers for yor primary ray, then 2 for your lens, then another 2 for your next bounce and so forth. Everytime, you're adding another dimension and although your random numbers are unifornm if we look at them at being in the same dimension, it may not necessarily be the case when used in these different dimensions. To ensure true uniformity, without having clustered samples, we stratify the samples we take. 
 
 The careful selection of samples to minimize variance is an ongoing area of research, that is an absolutely fascinating subject and one of my favourite topics in CG. Dr. Shirley expands on this topic is in this blog post: [Flavors of sampling in ray tracing](http://psgraphics.blogspot.com/2018/10/flavors-of-sampling-in-ray-tracing.html){:target="_blank"}. Leonhard Grünschloß has some excellent implementations of different [Quasi-Monte Carlo based samplers](http://gruenschloss.org/){:target="_blank"}.
 
-I’ll re-visit stratification at the end of Chapter 2, once we define the Monte Carlo Integral and importance sampling.
+I’ll slightly re-visit stratification at the end of Chapter 2, once we define the Monte Carlo Integral and importance sampling. The topic warrants tons of blog posts, maybe someday...
 
 The next post will focus on Chapter 2, where I'll delve ever so slightly into Monte Carlo theory and we'll perform some interesting computations.
+
+If you're feeling more mathematically inclined, [Alan Wolfe](https://twitter.com/Atrix256){:target="_blank"} has a great [blog post about One-Dimensional Monte Carlo Integration](https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/){:target="_blank"}. He's also got a plethora of posts that will have some common content with this blog post series.
 
 If you have any questions and feedback, feel free to comment or contact me via twitter/email.
