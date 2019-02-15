@@ -1,10 +1,10 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 2"
-date:   2019-01-07 10:30
+date:   2019-02-15 10:30
 categories: rendering
 ---
 
-Welcome back! If you're joining from the 1st post, you can skip ahead and start reading from the Chapter 2 title. If not, here's a [link](https://dargouder.github.io/darryls-pixels/rendering/2019/01/04/rt_rc_chapter1/){:target="_blank"} to the first post as there's some information in the beginning about this blog series.
+Welcome back! If you're joining from the 1st post, you can skip ahead and start reading from the Chapter 2 title. If not, here's a [link](https://dargouder.github.io/darryls-pixels/rendering/2019/02/15/rt_rc_chapter1/){:target="_blank"} to the first post as there's some information in the beginning about this blog series.
 
 # Chapter 2: One Dimensional MC Integration
 
@@ -37,7 +37,19 @@ Read the book right up until he proposes making his own PDF. I’ll lengthen the
 </b>
 </p>
 
-I think a short introduction into probability theory with a bit more formality will go a long way into helping you understand what Dr. Shirley computes in the book and other future graphics problems.
+So the area function Dr. Shirley is trying to calculate is:
+
+$$ 
+\int_0^2 C' r dr = \frac{1}{2} [C'r^2]_0^2 = 2C'
+\\
+1 = 2C'
+\\
+C' = \frac{1}{2}
+$$
+
+Knowing that $$ p(r) = C'r $$ this leads to $$ p(r) = \frac{r}{2} $$. The rest is pretty readable and understandable so I'll move onto something else.
+
+A short introduction into probability theory with a bit more formality will go a long way into helping you understand what Dr. Shirley computes in the book and other future graphics problems.
 
 We’ve been talking about random variables for a while. We know that generating a uniform random variable means that we use a function to generate a number in a particular range and since we stipulated that it is uniform, this also means that any other number in that range could have been picked with the exact same probability. 
 
@@ -119,8 +131,21 @@ For the moment, we’ve been drawing samples from the uniform distribution, but 
 Now would be a good time to finish the chapter.
 </b>
 </p>
+If you're feeling more mathematically inclined,
+I don't really have much to add to that. If you feel more mathematically inclined, [Alan Wolfe](https://twitter.com/Atrix256){:target="_blank"} has a great [blog post about One-Dimensional Monte Carlo Integration](https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/){:target="_blank"}. He's also got a plethora of posts that will have some common content with this blog post series. I would also suggest you have a look at [PBRT Chapter 13 ](http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html){:target="_blank"} if you're feeling brave!
 
-I don't really have much to add to that. If you feel more mathematically inclined, I would suggest you have a look at [PBRT Chapter 13 ](http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html){:target="_blank"}
+If you remember, we spoke about stratification previously. Let's take the original integral $$ \int_0^2 x^2 $$. If I wanted to stratify my points, dividing the interval in 4 spaces, to make sure I sampled uniformly, I could compute my Monte Carlo estimate in the following manner:
+
+$$
+\int_0^2 x^2 = (0.5 - 0)\frac{1}{N} \sum_{i=0}^{N} x_1^2 + 
+(1.0 - 0.5)\frac{1}{N} \sum_{i=0}^{N} x_2^2 +
+\\
+(1.5 - 1)\frac{1}{N} \sum_{i=0}^{N} x_3^2 +
+(2 - 1.5)\frac{1}{N} \sum_{i=0}^{N} x_4^2
+$$
+
+$$x_1$$ is a random number between 0 and 0.25, $$x_2$$ is between 0.25 and 0.5, $$ x_3$$ between 0.5 and 0.75, and $$x_4$$ between 0.75 and 1, giving us a total of 4N samples.
+
 
 If you have any questions and feedback, feel free to comment or contact me via twitter/email.
 

@@ -1,6 +1,6 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1"
-date:   2019-01-04 10:30
+date:   2019-02-15 10:30
 categories: rendering
 ---
 This blog series is a set of notes that expand on Dr Shirley's "Ray Tracing The Rest of Your Life" book. The book is compact, introducing all the tools that one will need in their arsenal to build a sophisticated ray tracer. I found it very refreshing in terms of simplifying otherwise esoteric concepts and bridging the gap between simple mathematical concepts and their application in ray tracing. 
@@ -85,6 +85,6 @@ I’ll slightly re-visit stratification at the end of Chapter 2, once we define 
 
 The next post will focus on Chapter 2, where I'll delve ever so slightly into Monte Carlo theory and we'll perform some interesting computations.
 
-If you're feeling more mathematically inclined, [Alan Wolfe](https://twitter.com/Atrix256){:target="_blank"} has a great [blog post about One-Dimensional Monte Carlo Integration](https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/){:target="_blank"}. He's also got a plethora of posts that will have some common content with this blog post series.
+
 
 If you have any questions and feedback, feel free to comment or contact me via twitter/email.
