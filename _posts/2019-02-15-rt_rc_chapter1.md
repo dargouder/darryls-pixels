@@ -1,6 +1,6 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1"
-date:   2019-02-15 10:30
+date:   2019-02-15 00:00
 categories: rendering
 ---
 This blog series is a set of notes that expand on Dr Shirley's "Ray Tracing The Rest of Your Life" book. The book is compact, introducing all the tools that one will need in their arsenal to build a sophisticated ray tracer. I found it very refreshing in terms of simplifying otherwise esoteric concepts and bridging the gap between simple mathematical concepts and their application in ray tracing. 

@@ -1,6 +1,6 @@
 ---
 title:  "Measuring the Rendering Equation"
-date:   2028-08-15 10:30
+date:   2028-08-15 00:30
 categories: mathematics, rendering, graphics
 ---
 The root concept of all computer graphics is the propogation light, and how we describe and measure its propogration throughout a scene. In the case of physically based rendering, physics is our ground truth, therefore the quantities used to measure light and the ideas on how the light behaves under arbitrary conditions are an attractive and elegant way of simulating light transport. At the root all these physical ideas is radiometry.
