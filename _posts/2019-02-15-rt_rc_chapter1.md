@@ -71,13 +71,13 @@ The **Law of Diminishing Returns** explains the idea that the more samples we ta
 <img src="{{ site.url }}/assets/posts/rt_rc_chapter1/pi_estimate.png" alt=" $$ \pi $$ Estimate error">
 </p>
 
-Notice how after sample 400, the error doesn't increase that much. This doesn't hold a lot of significance for now but it's good to keep this in mind.
+Notice how after sample 200, the error doesn't decrease that much. This doesn't hold a lot of significance for now but it's good to keep this in mind.
 
 <p align="center" style="color:red;">
 <b>Now would be a good time to go read the rest of the chapter.</b>
 </p>
 
-Stratification is a way of intelligently placing your samples to estimate your function better. If you look at my [blog post](https://dargouder.github.io/darryls-pixels/mathematics/2018/07/04/prngs/){:target="_blank"} about random numbers, I show that a good PRNG (Pseudo-Random Number Generator) should generate uniformly distributed points. When you're dealing with multiple dimensions a PRNG's inherent randomness isn't enough. Think of dimensions this way: you need 2 uniform random numbers for yor primary ray, then 2 for your lens, then another 2 for your next bounce and so forth. Everytime, you're adding another dimension and although your random numbers are unifornm if we look at them at being in the same dimension, it may not necessarily be the case when used in these different dimensions. To ensure true uniformity, without having clustered samples, we stratify the samples we take. 
+Stratification is a way of intelligently placing your samples to estimate your function better. If you look at my [blog post](https://dargouder.github.io/darryls-pixels/mathematics/2018/07/04/prngs/){:target="_blank"} about random numbers, I show that a good PRNG (Pseudo-Random Number Generator) should generate uniformly distributed points. When you're dealing with multiple dimensions a PRNG's inherent randomness isn't enough. Think of dimensions this way: you need 2 uniform random numbers for your primary ray, then 2 for your lens, then another 2 for your next bounce and so forth. Everytime, you're adding another dimension and although your random numbers are unifornm if we look at them at being in the same dimension, it may not necessarily be the case when used in these different dimensions. To ensure true uniformity, without having clustered samples, we stratify the samples we take. 
 
 The careful selection of samples to minimize variance is an ongoing area of research, that is an absolutely fascinating subject and one of my favourite topics in CG. Dr. Shirley expands on this topic is in this blog post: [Flavors of sampling in ray tracing](http://psgraphics.blogspot.com/2018/10/flavors-of-sampling-in-ray-tracing.html){:target="_blank"}. Leonhard Grünschloß has some excellent implementations of different [Quasi-Monte Carlo based samplers](http://gruenschloss.org/){:target="_blank"}.
 
