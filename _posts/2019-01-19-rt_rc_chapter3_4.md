@@ -1,6 +1,6 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 3 and 4"
-date:   2019-02-25 10:30
+date:   2019-02-27 10:30
 categories: rendering
 ---
 
