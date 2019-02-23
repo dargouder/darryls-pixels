@@ -134,18 +134,57 @@ Now would be a good time to finish the chapter.
 If you're feeling more mathematically inclined,
 I don't really have much to add to that. If you feel more mathematically inclined, [Alan Wolfe](https://twitter.com/Atrix256){:target="_blank"} has a great [blog post about One-Dimensional Monte Carlo Integration](https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/){:target="_blank"}. He's also got a plethora of posts that will have some common content with this blog post series. I would also suggest you have a look at [PBRT Chapter 13 ](http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html){:target="_blank"} if you're feeling brave!
 
-<!-- If you remember, we spoke about stratification previously. Let's take the original integral $$ \int_0^2 x^2 $$. If I wanted to stratify my points, dividing the interval in 4 spaces, to make sure I sampled uniformly, I could compute my Monte Carlo estimate in the following manner:
+If you remember, we spoke about stratification previously. Let's take the original integral $$ \int_0^2 x^2 $$. I to stratify my points, dividing the interval in 4 bins. If I am taking N samples, we are going to take \frac{n}{4} samples per bin, so let's call this value $$ k $$. The Monte Carlo estimate using stratified sampling now looks like this: 
 
 $$
-\int_0^2 x^2 = (0.5 - 0)\frac{1}{N} \sum_{i=0}^{N} x_1^2 + 
-(1.0 - 0.5)\frac{1}{N} \sum_{i=0}^{N} x_2^2 +
+\int_0^2 x^2 = (0.5 - 0)\frac{1}{k} \sum_{i=0}^{k} x_1^2 + 
+(1.0 - 0.5)\frac{1}{k} \sum_{i=0}^{k} x_2^2 +
 \\
-(1.5 - 1)\frac{1}{N} \sum_{i=0}^{N} x_3^2 +
-(2 - 1.5)\frac{1}{N} \sum_{i=0}^{N} x_4^2
+(1.5 - 1)\frac{1}{k} \sum_{i=0}^{k} x_3^2 +
+(2 - 1.5)\frac{1}{k} \sum_{i=0}^{k} x_4^2
 $$
 
-$$x_1$$ is a random number between 0 and 0.25, $$x_2$$ is between 0.25 and 0.5, $$ x_3$$ between 0.5 and 0.75, and $$x_4$$ between 0.75 and 1, giving us a total of 4N samples. -->
+$$x_1$$ is a random number between 0 and 0.5, $$x_2$$ is between 0.5 and 1.0, $$ x_3$$ between 1.0 and 1.5, and $$x_4$$ between 1.5 and 2, giving us a total of N samples.
 
+Here is a self contained program showing the stratified and naive Monte Carlo estimations.
+
+
+{% highlight c %}
+#include <iostream>
+
+int main()
+{
+	float simpleMcRes = 0.0;
+	int samples = 1000000;
+	float res = 0.0f;
+
+	int bins = 10;
+	int samplesPerBin = samples / bins;
+
+	for(int i = 1; i <= bins; ++i)
+	{
+		float binStart = (i - 1.0f) / float(bins);
+
+		std::cout << binStart << std::endl;
+		for(int j = 0; j < samplesPerBin; ++j)
+		{
+			float x = 2 * drand48();
+			simpleMcRes += x * x;
+
+			x = 2 * (i + drand48() - 1.0f)/float(bins);
+			res += x * x; 
+		}
+	}
+
+	simpleMcRes = 2.0 * simpleMcRes / float(samples);
+	res = 2.0f * res / float(samples);
+
+	std::cout << "Simple MC: " << simpleMcRes << std::endl;
+	std::cout << "Stratified MC: " << res << std::endl;
+
+	return 0;
+}
+{% endhighlight %}
 
 If you have any questions and feedback, feel free to comment or contact me via twitter/email.
 
