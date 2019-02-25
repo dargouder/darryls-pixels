@@ -134,7 +134,7 @@ Now would be a good time to finish the chapter.
 If you're feeling more mathematically inclined,
 I don't really have much to add to that. If you feel more mathematically inclined, [Alan Wolfe](https://twitter.com/Atrix256){:target="_blank"} has a great [blog post about One-Dimensional Monte Carlo Integration](https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/){:target="_blank"}. He's also got a plethora of posts that will have some common content with this blog post series. I would also suggest you have a look at [PBRT Chapter 13 ](http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html){:target="_blank"} if you're feeling brave!
 
-If you remember, we spoke about stratification previously. Let's take the original integral $$ \int_0^2 x^2 $$. I to stratify my points, dividing the interval in 4 bins. If I am taking N samples, we are going to take \frac{n}{4} samples per bin, so let's call this value $$ k $$. The Monte Carlo estimate using stratified sampling now looks like this: 
+If you remember, we spoke about stratification previously. Let's take the original integral $$ \int_0^2 x^2 $$. I to stratify my points, dividing the interval in 4 bins. If I am taking N samples, we are going to take $$\frac{n}{4}$$ samples per bin, so let's call this value $$ k $$. The Monte Carlo estimate using stratified sampling now looks like this: 
 
 $$
 \int_0^2 x^2 = (0.5 - 0)\frac{1}{k} \sum_{i=0}^{k} x_1^2 + 
@@ -144,7 +144,7 @@ $$
 (2 - 1.5)\frac{1}{k} \sum_{i=0}^{k} x_4^2
 $$
 
-$$x_1$$ is a random number between 0 and 0.5, $$x_2$$ is between 0.5 and 1.0, $$ x_3$$ between 1.0 and 1.5, and $$x_4$$ between 1.5 and 2, giving us a total of N samples.
+$$x_1$$ is a random number between 0 and 0.5, $$x_2$$ is between 0.5 and 1.0, $$ x_3$$ between 1.0 and 1.5, and $$x_4$$ between 1.5 and 2, giving us a total of $$N$$ samples.
 
 Here is a self contained program showing the stratified and naive Monte Carlo estimations.
 
