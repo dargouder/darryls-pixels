@@ -131,10 +131,10 @@ For the moment, we’ve been drawing samples from the uniform distribution, but 
 Now would be a good time to finish the chapter.
 </b>
 </p>
-If you're feeling more mathematically inclined,
-I don't really have much to add to that. If you feel more mathematically inclined, [Alan Wolfe](https://twitter.com/Atrix256){:target="_blank"} has a great [blog post about One-Dimensional Monte Carlo Integration](https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/){:target="_blank"}. He's also got a plethora of posts that will have some common content with this blog post series. I would also suggest you have a look at [PBRT Chapter 13 ](http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html){:target="_blank"} if you're feeling brave!
 
-If you remember, we spoke about stratification previously. Let's take the original integral $$ \int_0^2 x^2 $$. I to stratify my points, dividing the interval in 4 bins. If I am taking N samples, we are going to take $$\frac{n}{4}$$ samples per bin, so let's call this value $$ k $$. The Monte Carlo estimate using stratified sampling now looks like this: 
+If you feel more mathematically inclined, [Alan Wolfe](https://twitter.com/Atrix256){:target="_blank"} has a great [blog post about One-Dimensional Monte Carlo Integration](https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/){:target="_blank"}. He's also got a plethora of posts that will have some common content with this blog post series. I would also suggest you have a look at [PBRT Chapter 13 ](http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html){:target="_blank"} if you're feeling brave!
+
+If you remember, we spoke about stratification previously. Let's take the original integral $$ \int_0^2 x^2 $$. To stratify the points, we'll divide the interval in 4 bins. If I am taking N samples, we are going to take $$\frac{n}{4}$$ samples per bin, so let's call this value $$ k $$. The Monte Carlo estimate using stratified sampling now looks like this: 
 
 $$
 \int_0^2 x^2 = (0.5 - 0)\frac{1}{k} \sum_{i=0}^{k} x_1^2 + 
@@ -185,6 +185,10 @@ int main()
 	return 0;
 }
 {% endhighlight %}
+
+Stratification warrants its own post following some discussions with some friends. I wanted to show certain properties but felt that this post would be too long.
+
+That's pretty much it for this post, next up is Chapter 3 and 4.
 
 If you have any questions and feedback, feel free to comment or contact me via twitter/email.
 
