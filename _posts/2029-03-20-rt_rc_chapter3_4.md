@@ -1,14 +1,45 @@
 ---
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 3 and 4"
-date:   2019-02-27 10:30
+date:   2029-03-20 10:30
 categories: rendering
 ---
 
 Welcome back! If you're joining from the 2nd post, you can skip ahead and start reading from the Chapter 3 title. If not, here's a [link](https://dargouder.github.io/darryls-pixels/rendering/2019/01/04/rt_rc_chapter1/){:target="_blank"} to the first post as there's some information in the beginning about this blog series.
 
 # Chapter 3: MC Integration on the Sphere of Directions
+The integral that we're attempting to solve in this chapter is
+
+$$ 
+F = \int_{0}^{2\pi} \int_{-\pi}^{\pi} \cos^2 (theta) d\theta d\phi
+$$
+
+What are \theta and \phi? They are polar coordinates. If you integrate over those polar coordinates, you are covering all the directions around the point, which if you think about it, is a sphere. However in monte carlo ray tracing, instead of integrating over the directions using polar coordinates, we shoot stochastic rays around the point, therefore around the unit sphere centred on the point. In a typical scenario we do this on the unit hemisphere and then transform using an ONB but more on that later). To shoot stochastic rays, we will generate random values for x, y, and z between 0 and 1, and warp these numbers, so that we transform them and have them be located on the surface of the unit sphere. In Shirley's book, we've already been doing this, by resorting to what is known as 'Rejection Sampling'.
+
+
+
 
 # Chapter 4: Light Scattering
+
+This chapter introduces the rendering equation, albeit at a much higher level. I suggest you read the whole chapter then come back to this.
+At this point I hope you've become comfortable with the integrals and some of the probabilistic terms we've been defining. My favourite approach to the rendering equation is from Philip Dutre's and Kavita Bala's 'Advanced Global Illumination'.
+
+I don't think it's worth repeated what the book states in that same length, for an in depth approach I really suggest having a look at chapters 1-5 of that book. Chapter 2, 4 and 5 in particular are very useful.
+
+The original rendering equation paper by Kajiya is also a good read and suggest you have a look at it if you have the time.
+
+The most commonly seen form of the rendering equation is:
+
+$$ $$
+
+It might seem quite heavy at a first glance but let's try and exemplify it using a very simple scenario. I've written up a very small code snippet that we can use to understand a bit what's going on.
+
+When rendering, the value of most interest to us is the incidet radiance at our pixel. The incident radiance is dependent on which point is lighting that particular pixel. In that case, we need to shoot a ray towards the point which is visible by our pixel. If the point that we hit is a normal non-emitting surface, then we need to figure out what is the incident radiance at that particular point. To do that we need to figure out ALL the radiance that the point is receiving. This all sounds very daunting. Mathematically this is described as:
+
+$$ $$
+
+Well, given that this is an integral, we can probably apply Monte Carlo to figure this out!
+
+Building on what we have already previous written, we need to shoot rays to 
 
 # Chapter 5 Importance Sampling Materials
 

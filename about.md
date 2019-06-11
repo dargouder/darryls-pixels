@@ -4,7 +4,7 @@ title: "About"
 
 ### About Me
 
-My name's Darryl Gouder, I'm from Malta (it's a tiny island in the Mediterranean) and I'm currently living in London, working as a Software Developer at MPC, part of the New Technology team.
+My name's Darryl Gouder, I'm from Malta (it's a tiny island in the Mediterranean) and I'm currently living in London, working as a Software Developer at MPC, part of the Genesis team, trying to solve real-time rendering problems for virtual production.
 
 I've got this website and blog to show some of the stuff I work on in my free time. Most of it will pertain to computer graphics, mostly ray tracing related stuff as it is a big passion of mine. I might occasionally post something else, it depends!
 

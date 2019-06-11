@@ -2,6 +2,8 @@
 title: "Solstice"
 ---
 
+THIS PAGE NEEDS TO BE UPDATED SIGNIFICANTLY, COMING SOON JUNE 2019
+
 Solstice is my multiplatform physically-based renderer, written in C++. The objective of this project is for self-teaching goals, given my interest in ray tracing techniques.
 
 The project has started and stopped many times, this current version has been ongoing for over a year and a half.

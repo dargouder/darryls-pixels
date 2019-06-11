@@ -26,7 +26,7 @@
   <article>
     <header>
       <h1><a href="/mathematics,/rendering,/graphics/2028/08/15/radiometry_rend_eq/">Measuring the Rendering Equation</a></h1>
-      <time datetime="2028-08-15T10:30:00+01:00">August 15, 2028</time>
+      <time datetime="2028-08-15T00:30:00+01:00">August 15, 2028</time>
     </header>
 <p>The root concept of all computer graphics is the propogation light, and how we describe and measure its propogration throughout a scene. In the case of physically based rendering, physics is our ground truth, therefore the quantities used to measure light and the ideas on how the light behaves under arbitrary conditions are an attractive and elegant way of simulating light transport. At the root all these physical ideas is radiometry.</p>
 
@@ -58,85 +58,36 @@
 
   <article>
     <header>
-      <h1><a href="/rendering,/mathematics,/monte-carlo/2019/01/07/rt_rc_chapter1/">Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1</a></h1>
-      <time datetime="2019-01-07T10:30:00+00:00">January 7, 2019</time>
+      <h1><a href="/rendering/2019/02/27/rt_rc_chapter3_4/">Ray Tracing The Rest of Your Life: A reader's companion, Chapter 3 and 4</a></h1>
+      <time datetime="2019-02-27T10:30:00+00:00">February 27, 2019</time>
     </header>
-<p>This blog series is a set of notes that expand on Dr Shirley’s “Ray Tracing The Rest of Your Life” book. The book is short and sweet, introducing all the tools that one will need in their arsenal to build a sophisticated ray tracer. I found it very refreshing in terms of simplifying otherwise esoteric concepts and bridging the gap between simple mathematical concepts and how they are used in ray tracing.</p>
+<p>Welcome back! If you’re joining from the 2nd post, you can skip ahead and start reading from the Chapter 3 title. If not, here’s a <a href="https://dargouder.github.io/darryls-pixels/rendering/2019/01/04/rt_rc_chapter1/" target="_blank">link</a> to the first post as there’s some information in the beginning about this blog series.</p>
 
-<p>My journey through the book raised many questions, which Dr Shirley was very helpful in answering and explaining. Along the way I read many different articles and saw different videos to understand things. I am probably not the only person who needed help understanding things and won’t be the last, so I thought it would be a good idea to share the information that I gathered.</p>
+<h1 id="chapter-3-mc-integration-on-the-sphere-of-directions">Chapter 3: MC Integration on the Sphere of Directions</h1>
 
-<p>The format of this post is unconventional  - you should have a copy of <a href="http://www.realtimerendering.com/raytracing/Ray%20Tracing_%20the%20Rest%20of%20Your%20Life.pdf" target="_blank">the book</a> (ideally the pdf as it is the most recent updated) open in another tab. I’ll try to guide you as best as I can throughout the book by suggesting to look at the book and come back when you reach a certain point.</p>
-<p align="center" style="color:red;">
-<b>These statements will be in bold and red! </b></p>
+<h1 id="chapter-4-light-scattering">Chapter 4: Light Scattering</h1>
 
-<p>Re-reading is also very important - it’s very hard to understand everything at a first read. Don’t worry too much if you don’t get everything immediately. These are not straightforward concepts so just keep at it. With all that said, let’s start.</p>
+<h1 id="chapter-5-importance-sampling-materials">Chapter 5 Importance Sampling Materials</h1>
 
-<h1 id="chapter-1-a-simple-monte-carlo-program">Chapter 1: A Simple Monte Carlo Program</h1>
-
-<p>The first chapter is very straightforward. Demonstrating Monte Carlo by estimating <script type="math/tex">\pi</script> is a prevalent computational statistics example.</p>
-
-<p>The code presented in the book very simple and self explanatory. A point is generated inside a square and if it is inside the circle, we increase the variable tracking the points inside the circle. We divide this final count by the total number of points we generate to get an average answer to <script type="math/tex">\pi</script>.</p>
+<p>Monte Carlo is widely used to solve integrals of higher dimensions, where an analytical method is not possible, or other integral computational methods are intractable. Dr. Shirley selects a simple integral to show how effective Monte Carlo integration is.</p>
 
 <p align="center" style="color:red;">
 <b>
-It’s time to go look at the book - read up until the you get to the 2nd code snippet, involving the running \(\pi\) calculation program.
+Start reading the chapter right until you get to the code that computes the integral. Don’t worry if you don’t get it, I’m going to explain everything.
 </b>
 </p>
 
-<p>One of the questions of those uninitiated in probability and Monte Carlo theory might be: How does this type of computation work and why give us an estimate of <script type="math/tex">\pi</script>? This stems from what is known as the <strong>expected value</strong>.</p>
+<p>The integral is <script type="math/tex">\int_0^2 x^2 dx</script> which will compute the area under the curve, with the limits 0 to 2. So how do we translate this into a Monte Carlo estimate? I was a bit confused by the sudden appearance of the 2 being multiplied with the average(x^2, 0, 2) function. Why are we multiplying the sample average by 2? Well as it turns out, this how we perform Monte Carlo integration. A generic integral of the form:</p>
 
-<p>A classic example in explaining the expected value is trying to answer the question:</p>
+<script type="math/tex; mode=display">F = \int_a^b f(x)</script>
 
-<p align="center">
-What is the probability that I will get a heads, when I flip a fair coin?
-</p>
+<p>can be estimated with a Monte Carlo estimator by performing</p>
 
-<p>We know intuitively that it is 0.5. However what the expected value theory shows us is that if we</p>
-
-<ol>
-  <li>get an actual fair coin,</li>
-  <li>start flipping it,</li>
-  <li>take note of each result,</li>
-  <li>count the number of heads and tails,</li>
-  <li>average them,</li>
-</ol>
-
-<p>We will probably get a result close to 0.5. The more times we toss the coin, the closer to 0.5 the answer will be.</p>
-
-<p>The mathematical notation used to describe the expected value is:</p>
-
-<script type="math/tex; mode=display">E[X] = \sum_{i=1}^k x_i p_i = x_1 p_1 + x_2 p_2 + ... + x_k p_k</script>
-
-<ul>
-  <li><script type="math/tex">E[X]</script> is the expected value of <script type="math/tex">X</script>, our statistical experiment.</li>
-  <li><script type="math/tex">x_i</script> is the result of each sample that we compute of our function</li>
-  <li><script type="math/tex">p_i</script> is the probability weight of this sample.</li>
-</ul>
-
-<p>The reason why this works is a theorem known as the <strong>Law of Large Numbers</strong>. The weak law of large numbers states that if we take a number of samples and average them, it will <em>PROBABLY</em> converge to the expected value. The strong law of large numbers states that it will converge <em>ALMOST SURELY</em> (with probability 1). We’re not going to go down this rabbit hole, the one of interest to us in the weak law.</p>
-
-<p>An important term that we should define is <strong>variance</strong>. In our example, we were trying to compute <script type="math/tex">\pi</script>, which makes this  the mean we’re trying to estimate. The variance, in very informal language, measures how spread out our sample computations are from this mean. The lower the variance, the less spread out the samples are and the more accurate our computed mean is to the expected value (the expected value is also known as the mean). If we have high variance, this means our samples are spread out, and we might be using an ineffective function to computationally find our mean.</p>
-
-<p>The <strong>Law of Diminishing Returns</strong> explains the idea that the more samples we take, the more we need than before, to get an accurate answer.  In terms of numbers, if you want to half the error that you’re getting, you’ll need to quadruple the amount of samples. Here is how the error between our estimated value of <script type="math/tex">\pi</script> and actual <script type="math/tex">\pi</script> decreases as we compute more samples.</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/posts/rt_rc_chapter1/pi_estimate.png" alt=" $$ \pi $$ Estimate error" />
-</p>
-
-<p>This doesn’t hold a lot of significance for now but it’s good to keep this in mind.</p>
-
-<p align="center" style="color:red;">
-<b>Now would be a good time to go read the rest of the chapter.</b>
-</p>
-
-<p>Stratification is a way of intelligently placing your samples to estimate your function better. If you look at my blog post about random numbers, I show that a good PRNG (Pseudo-random number generator) should generate uniformly distributed points. However to ensure true uniformity, without having clustered samples, we stratify the samples we take.</p>
-
-<p>The careful selection of samples to minimize variance is an ongoing area of research, that is an absolutely fascinating subject and one of my favourite topics in CG. Dr. Shirley expands a bit on this is in this blog post: <a href="http://psgraphics.blogspot.com/2018/10/flavors-of-sampling-in-ray-tracing.html" target="_blank">Flavors of sampling in ray tracing</a>.
-Some more links from me about this topic. I’ll re-visit this at the end of Chapter 2, once we define the Monte Carlo Integral.</p>
+<script type="math/tex; mode=display">(b-a) \frac{1}{N} \sum_{i=0}^{N-1} f(X_i)</script>
 
 
     
-    <footer><a class="ghost" href="/rendering,/mathematics,/monte-carlo/2019/01/07/rt_rc_chapter1/">read more »</a></footer>
+    <footer><a class="ghost" href="/rendering/2019/02/27/rt_rc_chapter3_4/">read more »</a></footer>
     
   </article>
 
@@ -144,7 +95,7 @@ Some more links from me about this topic. I’ll re-visit this at the end of Cha
 
 <footer>
     <a  class="disabled" >« newer posts</a>
-    <span class="paginate">page 1 of 2</span>
+    <span class="paginate">page 1 of 3</span>
     <a  class="gray" href="/page2" >older posts »</a>
 </footer>
 
