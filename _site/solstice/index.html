@@ -38,9 +38,9 @@
 
 <p>Ingo Wald’s PBRTParser is used to parse PBRT scenes. For now, only the geometry, materials and lights are used from these files. Other settings are set in a JSON file.</p>
 
-<p>On a recent branch I have started moving to a data-driven approach, which simplifies memory management, extensibility and porting to the GPU. This decision was spurred by my extensive work with GPUs this past year.</p>
+<p>On a recent branch I have started moving to a data-driven approach, which simplifies memory management, extensibility and porting to the GPU. This decision was spurred by my extensive work with GPUs this past year. With OptiX 7.0 now out and Ingo’s OptiX course published on GitHub, the world is my oyster when it comes to GPU ray tracing!</p>
 
-<p>Suggested material for such an approach is Fabian Giesen’s Data Oriented Design Pramming book, the MoonRay architecture paper and Mike Acton’s wonderful rant on DoD at CppCon. Working with GPUs forces you to think in this way, so go try out CUDA, OptiX, Vulkan, DX12 whatever!</p>
+<p>Suggested material for such an approach is Fabian Giesen’s Data Oriented Design Pramming book, the MoonRay architecture paper and Mike Acton’s wonderful rant on DoD at CppCon. Working with GPUs forces you to think in this way, so go try out CUDA, OptiX, Vulkan, DX12, whatever.</p>
 
 <h3 id="current-features">Current features</h3>
 
@@ -117,7 +117,7 @@
 <img src="http://localhost:4000/assets/solstice/cornellGlass.png" alt="Cornell box with a mirror box." />
 </p>
 
-<p>The following render is of the Stanford Bunny inside the Cornell Box. If you look closely at the light it looks weird - that’s because I was also allowing the light to light from the back. Again, a bug from the olden days i.e. June 2018</p>
+<p>The following render is of the Stanford Bunny inside the Cornell Box. If you look closely at the light it looks weird - that’s because I was also allowing the light to light from the back. A bug from the olden days i.e. June 2018</p>
 <p align="center">
 <img src="http://localhost:4000/assets/solstice/bunny.png" alt="Cornell box with bunny - all diffuse" />
 </p>

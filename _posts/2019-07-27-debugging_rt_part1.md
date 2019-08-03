@@ -1,6 +1,6 @@
 ---
 title:  "Debugging a raytracer: part 1"
-date:   2019-07-29 10:30
+date:   2019-07-27 10:30
 categories: rendering
 ---
 Working on my renderer sometimes leads to some hair-tearing moments when bugs start to come up. When you're tracing millions of rays and you've got millions of pixels, tracking down a visual bug is very tricky. 
@@ -31,10 +31,21 @@ I had not noticed this bug before because I was not transmitting rays through a 
 
 Fixing that bug significantly improved my image
 
-but something was still off. At this point I had been going at this for quite a few days (over a week), with only an hour or 2 to spare after work to look at this bug. So I took a bit of a shortcut and debugged a single ray through PBRT. This one I found with PBRT very quickly - I wasn't setting the SpecularBounce flag to true when I was reflecting from a dielectric and so was computing direct lighting on a specular reflective surface. Fixing that gave me the final image:
+<p align="center">
+<img src="{{ site.url }}/assets/posts/debugging_rt_part1/cornellBoxPBRTNoReflection.png" alt="PBRT Incorrect Render">
+<img src="{{ site.url }}/assets/posts/debugging_rt_part1/cornellGlassWrongNoReflection.png" alt="Solstice Incorrect Render">
+
+</p>
+but this was completely different! I realized that having modified the normals during the surface interaction record population, another place where I was faceforwarding normals liberally was my Next Event Estimation code. I cleaned up this part of the code, rendered, got a match with PBRT and introduced reflection back in:
 
 <p align="center">
-<img src="{{ site.url }}/assets/posts/debugging_rt_part1/cornellGlass.png" alt="Incorrect Render">
+<img src="{{ site.url }}/assets/posts/debugging_rt_part1/cornellGlassWrongReflectionNoLight.png" alt="Correct Render">
+</p>
+ 
+ At this point I introducted the reflection back in had been going at this for quite a few days (over a week), with only an hour or 2 to spare after work to look at this bug. So I took a bit of a shortcut and debugged a single ray through PBRT. This one I found with PBRT very quickly - I wasn't setting the SpecularBounce flag to true when I was reflecting from a dielectric and so was computing direct lighting on a specular reflective surface. Fixing that gave me the final image:
+
+<p align="center">
+<img src="{{ site.url }}/assets/posts/debugging_rt_part1/cornellGlass.png" alt="Correct Render">
 </p>
 
 Which is pretty much what PBRT is getting albeit slightly darker. 
@@ -46,5 +57,5 @@ Another thing that was informative was following a path in PBRT. With a tool lik
 
 One thing which I really want to do is render a single path, and in the mean time have my Vulkan engine draw the path and the normal of each surface intersection, and hovering over the intersection point, I can get the material details, the fresnel reflectance value if it was a specular surface, that kind of stuff. I have given it a lot of thought and would love to do this but time is a major obstacle.
 
-That's all I have today on this! The next post will probably be on debugging acceleration structures, the only issue is that I did the coding working on acceleration structures around February and as a result, my memory is a little hazy on my efforts so I might end up writing another acceleration structure to jog my memory and get new bugs, solve these problems and share the "wisdom"
+That's all I have today on this! The next post will probably be on debugging acceleration structures, the only issue is that I did the coding working on acceleration structures around February and as a result, my memory is a little hazy on my efforts so I might end up writing another acceleration structure to jog my memory and get new bugs, solve these problems and share the "wisdom", with that, ciao!
 
