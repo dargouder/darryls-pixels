@@ -3,15 +3,15 @@
 <meta charset="utf-8">
 <meta name="author" content="Darryl Gouder">
 <meta name="description" content="Blog about code and stuff...">
-<title> Home › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/page2/">
+<title> Planned updates, stay tuned! › Darryl's Pixels</title>
+<link rel="canonical" href="http://localhost:4000/rendering/2019/06/11/update/">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/basic.css" rel="stylesheet">
 <link href="/highlight.css" rel="stylesheet">
 <link href="/index.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
-
+<script src="//darrylgouder.disqus.com/embed.js" async></script>
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <header>
@@ -21,8 +21,8 @@
     <div><a href="https://twitter.com/dargouder"><i class="fa fa-twitter"></i></a><a href="https://github.com/dargouder"><i class="fa fa-github"></i></a><a href="mailto:dargouder@gmail.com"><i class="fa fa-envelope"></i></a></div>
   </nav>
 </header>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <main>
-  
   <article>
     <header>
       <h1><a href="/rendering/2019/06/11/update/">Planned updates, stay tuned!</a></h1>
@@ -39,46 +39,16 @@
 <p>On the work-side, we’re veeeeery busy with SIGGRAPH, but I’ll share later on what we’re doing, I don’t want to spoil it, but it is going to be brilliant! Tomorrow I’m giving a talk to the London GPU meetup group and I’ll talk about our initial efforts and investigations into getting some Realtime Ray tracing inside of Unity DXR. Whereas at GTC we kept it quite high level, I’ll dive deeper this time.</p>
 
     
-  </article>
-
-  <article>
-    <header>
-      <h1><a href="/rendering/2019/02/21/rt_rc_chapter2/">Ray Tracing The Rest of Your Life: A reader's companion, Chapter 2</a></h1>
-      <time datetime="2019-02-21T00:00:00+01:00">February 21, 2019</time>
-    </header>
-<p>Welcome back! If you’re joining from the 1st post, you can skip ahead and start reading from the Chapter 2 title. If not, here’s a <a href="https://dargouder.github.io/darryls-pixels/rendering/2019/02/15/rt_rc_chapter1/" target="_blank">link</a> to the first post as there’s some information in the beginning about this blog series.</p>
-
-<h1 id="chapter-2-one-dimensional-mc-integration">Chapter 2: One Dimensional MC Integration</h1>
-
-<p>Monte Carlo is widely used to solve integrals of higher dimensions, where an analytical method is not possible, or other integral computational methods are intractable. Dr. Shirley selects a simple integral to show how effective Monte Carlo integration is.</p>
-
-<p align="center" style="color:red;">
-<b>
-Start reading the chapter right until you get to the code that computes the integral. Don’t worry if you don’t get it, I’m going to explain everything.
-</b>
-</p>
-
-<p>The integral is <script type="math/tex">\int_0^2 x^2 dx</script> which will compute the area under the curve, with the limits 0 to 2. So how do we translate this into a Monte Carlo estimate? I was a bit confused by the sudden appearance of the 2 being multiplied with the average(x^2, 0, 2) function. Why are we multiplying the sample average by 2? Well as it turns out, this how we perform Monte Carlo integration. A generic integral of the form:</p>
-
-<script type="math/tex; mode=display">F = \int_a^b f(x)</script>
-
-<p>can be estimated with a Monte Carlo estimator by performing</p>
-
-<script type="math/tex; mode=display">(b-a) \frac{1}{N} \sum_{i=0}^{N-1} f(X_i)</script>
-
-
     
-    <footer><a class="ghost" href="/rendering/2019/02/21/rt_rc_chapter2/">read more »</a></footer>
+    <hr><div id="disqus_thread"></div>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
   </article>
-
 </main>
 
+
 <footer>
-    <a  class="gray" href="/" >« newer posts</a>
-    <span class="paginate">page 2 of 4</span>
-    <a  class="gray" href="/page3" >older posts »</a>
+    <a href="/rendering/2019/07/29/debugging_rt_part1/">« Debugging a raytracer: part 1</a>
+    <a href="/rendering/2019/02/21/rt_rc_chapter2/">Ray Tracing The Rest of Your Life: A reader's companion, Chapter 2 »</a>
 </footer>
-
-
 

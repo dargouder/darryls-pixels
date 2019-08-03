@@ -1,1 +1,1 @@
-bundle exec jekyll serve --watch --future  --baseurl ""
+bundle exec jekyll serve --watch --future --baseurl ""

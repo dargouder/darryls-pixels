@@ -1,0 +1,12 @@
+Debugging my ray tracer - part 1
+
+Working on my renderer sometimes leads to some hair-tearing moments when bugs start to come up. When you're tracing millions of rays and you've got millions of pixels, tracking down a visual bug is very tricky. 
+
+This blog post is the first in a series where I'll discuss what I did to debug certain bugs that I encountered. The series isn't planned - when I get a bug which gives me a lot of grief, I'll write down what I did to find it and fix it. 
+
+When I implemented my glass material I was initially getting this renderer:
+
+which at first glass doesn't look bad but somthing is off. We're easily visually deceived and this is one of the fun things about graphics - things which are unnatural might still seem natural (visually). I ran a PBRT render of the same scene and got this:
+
+
+A side by side comparison shows that there are discrep
