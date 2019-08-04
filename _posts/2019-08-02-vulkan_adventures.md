@@ -7,7 +7,7 @@ After several months at work using DX12 I got the itch for doing some low-level 
 
 I didn't really want to start from some beginner's tutorial so I did some hunting and found Arsen's Vulkan streams which are perfect for what I wanted.
 
-He blazes through the code explaining a lot of things, but with my DX12 experience, they're quite brilliant because they cut through a lot of bullsh*t and get straight to the point and then I do my own digging into the spec.
+He blazes through the code explaining a lot of things, but with my DX12 experience, they're quite brilliant because they get straight to the point and then I do my own digging into the spec.
 
 This is the first time I've ever watched a coding stream and I'm really enjoying it. In my first ever development job in Malta, we did a lot of paired programming and this was ridiculuously useful. Seeing someone with 10+ years of experience coding (20+ in his case), making decisions and thinking out loud is very educational. One of the things that I like to hear the most about is not what they know about a topic but they learnt it - and seeing his problem solving approach is great.
 

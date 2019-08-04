@@ -14,7 +14,7 @@ Ingo Wald's PBRTParser is used to parse PBRT scenes. For now, only the geometry,
 
 On a recent branch I have started moving to a data-driven approach, which simplifies memory management, extensibility and porting to the GPU. This decision was spurred by my extensive work with GPUs this past year. With OptiX 7.0 now out and Ingo's OptiX course published on GitHub, the world is my oyster when it comes to GPU ray tracing!
 
-Suggested material for such an approach is Fabian Giesen's Data Oriented Design Pramming book, the MoonRay architecture paper and Mike Acton's wonderful rant on DoD at CppCon. Working with GPUs forces you to think in this way, so go try out CUDA, OptiX, Vulkan, DX12, whatever.
+Suggested material for such an approach is Richard Fabian's Data Oriented Design Pramming book, the MoonRay architecture paper and Mike Acton's wonderful rant on DoD at CppCon. Working with GPUs forces you to think in this way, so go try out CUDA, OptiX, Vulkan, DX12, whatever.
 
 
 ### Current features
