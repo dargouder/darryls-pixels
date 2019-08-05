@@ -42,7 +42,7 @@ but this was completely different! I realized that having modified the normals d
 <img src="{{ site.url }}/assets/posts/debugging_rt_part1/cornellGlassWrongReflectionNoLight.png" alt="Correct Render">
 </p>
  
- At this point I introducted the reflection back in had been going at this for quite a few days (over a week), with only an hour or 2 to spare after work to look at this bug. So I took a bit of a shortcut and debugged a single ray through PBRT. This one I found with PBRT very quickly - I wasn't setting the SpecularBounce flag to true when I was reflecting from a dielectric and so was computing direct lighting on a specular reflective surface. Fixing that gave me the final image:
+ At this point I introducted the reflection back in but had a bug. I had been going at this for quite a few days (over a week), with only an hour or 2 to spare after work to look at this bug. So I took a bit of a shortcut and debugged a single ray through PBRT. This one I found with PBRT very quickly - I wasn't setting the SpecularBounce flag to true when I was reflecting from a dielectric and so was computing direct lighting on a specular reflective surface. Fixing that gave me the final image:
 
 <p align="center">
 <img src="{{ site.url }}/assets/posts/debugging_rt_part1/cornellGlass.png" alt="Correct Render">
