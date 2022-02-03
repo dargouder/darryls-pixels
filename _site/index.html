@@ -10,7 +10,7 @@
 <link href="/basic.css" rel="stylesheet">
 <link href="/highlight.css" rel="stylesheet">
 <link href="/index.css" rel="stylesheet">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl&apos;s Pixels" />
 
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -137,7 +137,7 @@
 <img src="http://localhost:4000/assets/posts/debugging_rt_part1/cornellGlassWrongReflectionNoLight.png" alt="Correct Render" />
 </p>
 
-<p>At this point I introducted the reflection back in had been going at this for quite a few days (over a week), with only an hour or 2 to spare after work to look at this bug. So I took a bit of a shortcut and debugged a single ray through PBRT. This one I found with PBRT very quickly - I wasn’t setting the SpecularBounce flag to true when I was reflecting from a dielectric and so was computing direct lighting on a specular reflective surface. Fixing that gave me the final image:</p>
+<p>At this point I introducted the reflection back in but had a bug. I had been going at this for quite a few days (over a week), with only an hour or 2 to spare after work to look at this bug. So I took a bit of a shortcut and debugged a single ray through PBRT. This one I found with PBRT very quickly - I wasn’t setting the SpecularBounce flag to true when I was reflecting from a dielectric and so was computing direct lighting on a specular reflective surface. Fixing that gave me the final image:</p>
 
 <p align="center">
 <img src="http://localhost:4000/assets/posts/debugging_rt_part1/cornellGlass.png" alt="Correct Render" />

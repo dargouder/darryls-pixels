@@ -10,7 +10,7 @@
 <link href="/basic.css" rel="stylesheet">
 <link href="/highlight.css" rel="stylesheet">
 <link href="/index.css" rel="stylesheet">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl&apos;s Pixels" />
 <script src="//darrylgouder.disqus.com/embed.js" async></script>
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -48,13 +48,13 @@
 
 <figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="c1">// Inititiate device and scene
-</span>    <span class="c1">// Add geometry to scene
-</span>    <span class="c1">// Initiate image parameters, image and camera
-</span>    <span class="c1">// Render image
-</span>    <span class="c1">// Output image
-</span>    <span class="c1">// Release scene
-</span><span class="p">}</span></code></pre></figure>
+    <span class="c1">// Inititiate device and scene</span>
+    <span class="c1">// Add geometry to scene</span>
+    <span class="c1">// Initiate image parameters, image and camera</span>
+    <span class="c1">// Render image</span>
+    <span class="c1">// Output image</span>
+    <span class="c1">// Release scene</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>We’ll work through each of these with a short explanation for everything. The full source code listing can be found here. It is self contained, with embree being part of the sources. If you have any issues with compilation, feel free to contact me.</p>
 
@@ -70,8 +70,8 @@
 
 <h3 id="device-initiation">Device initiation</h3>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Inititiate device and scene
-</span><span class="n">RTCDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">rtcNewDevice</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Inititiate device and scene</span>
+<span class="n">RTCDevice</span> <span class="n">device</span> <span class="o">=</span> <span class="n">rtcNewDevice</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
 <span class="n">RTCScene</span> <span class="n">scene</span> <span class="o">=</span> <span class="n">rtcNewScene</span><span class="p">(</span><span class="n">device</span><span class="p">);</span></code></pre></figure>
 
 <p>The device object is defined to be a class factory for all the other objects that we’ll be creating such as the scene and the geometry, using the <a href="https://embree.github.io/api.html#rtcnewdevice" target="_blank">rtcNewDevice</a> call. The device handle is not destroyed until all objects bound with the device are released. Embree uses reference counting to keep track of the lifetime of all the objects you create - functions with the word release decrease the reference counter. It’s very important to use the release functions, otherwise you’re leaking memory. I’ve heard that for every byte of leaked memory, a kitten drowns and we don’t want that now do we?</p>
@@ -82,38 +82,38 @@
 
 <p>We now need to define and add the geometry to our scene. I’m just going to create a triangle in the middle of the screen.</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Create a new geometry for the triangle
-// Define the vertices
-// Assign the vertices to the geometry buffer 
-</span><span class="o">//</span> <span class="n">Commit</span> <span class="n">geometry</span> <span class="n">to</span> <span class="n">the</span> <span class="n">scene</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Create a new geometry for the triangle</span>
+<span class="c1">// Define the vertices</span>
+<span class="c1">// Assign the vertices to the geometry buffer </span>
+<span class="c1">// Commit geometry to the scene</span></code></pre></figure>
 
 <h4 id="creating-the-triangle-geometry-and-defining-the-vertices">Creating the triangle geometry and defining the vertices</h4>
 
 <p>We’ll need to allocate memory for our geometry:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Create a new geometry for the triangle
-</span><span class="n">RTCGeometry</span> <span class="n">mesh</span> <span class="o">=</span> <span class="n">rtcNewGeometry</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">RTC_GEOMETRY_TYPE_TRIANGLE</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Create a new geometry for the triangle</span>
+<span class="n">RTCGeometry</span> <span class="n">mesh</span> <span class="o">=</span> <span class="n">rtcNewGeometry</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">RTC_GEOMETRY_TYPE_TRIANGLE</span><span class="p">);</span>
 <span class="n">Vertex</span><span class="o">*</span> <span class="n">vertices</span> <span class="o">=</span> <span class="p">(</span><span class="n">Vertex</span><span class="o">*</span><span class="p">)</span> <span class="n">rtcSetNewGeometryBuffer</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">RTC_BUFFER_TYPE_VERTEX</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">RTC_FORMAT_FLOAT3</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Vertex</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span></code></pre></figure>
 
 <p>We create a geometry object using <a href="https://embree.github.io/api.html#rtcnewgeometry">rtcNewGeometry</a>, which is attached to our device and we’ve picked a triangle to be our geometry of choice. Embree has a selection of different geometry types available, which you can find inside the documenation. Once we’ve created our geometry object, we create a buffer for the vertices, using <a href="https://embree.github.io/api.html#rtcsetnewgeometrybuffer">rtcSetNewGeometryBuffer</a>. We’ll use this function to set the indices later on. The key here is the second parameter, RTC_BUFFER_TYPE_VERTEX.</p>
 
 <p>Next is the vertices:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Define the vertices
-</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span>  <span class="mi">0</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Define the vertices</span>
+<span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span>  <span class="mi">0</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span>
 <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span>  <span class="mi">0</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span>
 <span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span>  <span class="mi">1</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span>  <span class="mi">0</span><span class="p">;</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span></code></pre></figure>
 
 <p>Nothing extraordinary here - just defining the positions of the vertices. We’ll now assign these indices to our buffer:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Assign the vertices to the geometry buffer
-</span><span class="n">Triangle</span><span class="o">*</span> <span class="n">triangles</span> <span class="o">=</span> <span class="p">(</span><span class="n">Triangle</span><span class="o">*</span><span class="p">)</span> <span class="n">rtcSetNewGeometryBuffer</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">RTC_BUFFER_TYPE_INDEX</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">RTC_FORMAT_UINT3</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Triangle</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Assign the vertices to the geometry buffer</span>
+<span class="n">Triangle</span><span class="o">*</span> <span class="n">triangles</span> <span class="o">=</span> <span class="p">(</span><span class="n">Triangle</span><span class="o">*</span><span class="p">)</span> <span class="n">rtcSetNewGeometryBuffer</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">RTC_BUFFER_TYPE_INDEX</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">RTC_FORMAT_UINT3</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Triangle</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">triangles</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">v0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">triangles</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">v1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">triangles</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">v2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span></code></pre></figure>
 
 <p>We’re now setting up an index buffer for the vertices. Looking at this from a birds eye view, it’s quite similar to how things are done in OpenGL. We’re not done yet though. We need to commit the geometry and the scene.</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Commit geometry to the scene
-</span><span class="n">rtcCommitGeometry</span><span class="p">(</span><span class="n">mesh</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Commit geometry to the scene</span>
+<span class="n">rtcCommitGeometry</span><span class="p">(</span><span class="n">mesh</span><span class="p">);</span>
 <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">geomID</span> <span class="o">=</span> <span class="n">rtcAttachGeometry</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">mesh</span><span class="p">);</span>
 <span class="n">rtcReleaseGeometry</span><span class="p">(</span><span class="n">mesh</span><span class="p">);</span>
 <span class="n">rtcCommitScene</span><span class="p">(</span><span class="n">scene</span><span class="p">);</span></code></pre></figure>
@@ -124,15 +124,15 @@
 
 <p>We’ll initiate the image and the camera parameters.</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Initiate image parameters, image and camera
-</span><span class="k">const</span> <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Initiate image parameters, image and camera</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">&gt;</span> <span class="n">image</span><span class="p">;</span>
 
-<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">lower_left_corner</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
-<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">horizontal</span><span class="p">(</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
-<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">vertical</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
-<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">origin</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span></code></pre></figure>
+<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="nf">lower_left_corner</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="nf">horizontal</span><span class="p">(</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="nf">vertical</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="nf">origin</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span></code></pre></figure>
 
 <p>If you’re not familiar with regards to the parameters of the camera, I’d suggest reading up on primary ray generation and the camera model. I might do a post about this later as I used to struggle with this a while back. Now that I’ve said this in public I’ll be forced to do it :)</p>
 
@@ -142,55 +142,55 @@
 
 <h3 id="render-image">Render image</h3>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Render image
-</span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">y</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Render image</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">y</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">width</span><span class="p">;</span> <span class="o">++</span><span class="n">x</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="c1">// Initiate pixel colour
-</span>        <span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">color</span> <span class="o">=</span> <span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
-        <span class="c1">// Create ray intersection context
-</span>        <span class="c1">// Generate ray
-</span>        <span class="c1">// Perform ray intersection
-</span>        <span class="c1">// Check if ray intersected any geometry
-</span>        <span class="c1">// Set pixel colour
-</span>    <span class="p">}</span>
+        <span class="c1">// Initiate pixel colour</span>
+        <span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">color</span> <span class="o">=</span> <span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+        <span class="c1">// Create ray intersection context</span>
+        <span class="c1">// Generate ray</span>
+        <span class="c1">// Perform ray intersection</span>
+        <span class="c1">// Check if ray intersected any geometry</span>
+        <span class="c1">// Set pixel colour</span>
+    <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>We’ll now define the intersection context:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Create ray intersection context
-</span><span class="n">RTCIntersectContext</span> <span class="n">context</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Create ray intersection context</span>
+<span class="n">RTCIntersectContext</span> <span class="n">context</span><span class="p">;</span>
 <span class="n">rtcInitIntersectContext</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">);</span></code></pre></figure>
 
 <p>We use the RTCIntersectContext for your ray intersection test. <a href="https://embree.github.io/api.html#rtcinitintersectcontext" target="_blank">rtcInitIntersectContext</a> takes flags which can optimize the performance of the ray tracer, such as indicating that the rays are coherent.</p>
 
 <p>This is the primary ray generation stolen from Dr. Shirley’s Ray Tracing in One Weekend book.</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Generate ray
-</span><span class="kt">float</span> <span class="n">u</span> <span class="o">=</span> <span class="kt">float</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="kt">float</span> <span class="p">(</span><span class="n">width</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Generate ray</span>
+<span class="kt">float</span> <span class="n">u</span> <span class="o">=</span> <span class="kt">float</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="kt">float</span> <span class="p">(</span><span class="n">width</span><span class="p">);</span>
 <span class="kt">float</span> <span class="n">v</span> <span class="o">=</span> <span class="kt">float</span> <span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="kt">float</span> <span class="p">(</span><span class="n">height</span><span class="p">);</span>
 
-<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="n">direction</span><span class="p">(</span><span class="n">lower_left_corner</span> <span class="o">+</span> <span class="n">horizontal</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">vertical</span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
-<span class="n">Ray</span> <span class="n">r</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">normalize</span><span class="p">(</span><span class="n">direction</span><span class="p">),</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="n">embree</span><span class="o">::</span><span class="n">inf</span><span class="p">);</span></code></pre></figure>
+<span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span> <span class="nf">direction</span><span class="p">(</span><span class="n">lower_left_corner</span> <span class="o">+</span> <span class="n">horizontal</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">vertical</span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="n">Ray</span> <span class="nf">r</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">normalize</span><span class="p">(</span><span class="n">direction</span><span class="p">),</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="n">embree</span><span class="o">::</span><span class="n">inf</span><span class="p">);</span></code></pre></figure>
 
 <p>Once we have the ray set up, all we need to do is perform a ray intersection test using an embree function suited for <a href="https://embree.github.io/api.html#rtcintersect1" target="_blank">single ray intersection tests</a>.</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Perform ray intersection
-</span><span class="n">rtcIntersect1</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="n">RTCRayHit_</span><span class="p">(</span><span class="n">r</span><span class="p">));</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Perform ray intersection</span>
+<span class="n">rtcIntersect1</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="n">RTCRayHit_</span><span class="p">(</span><span class="n">r</span><span class="p">));</span></code></pre></figure>
 
 <p>We need to pass in the scene and the context. The RTCRayHit_ function constructs the embree ray-type from the one that type that we defined ourselves. In reality our ray is very similar to what’s the defined in embree. The intersection information is stored in the ray, and checked:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Check if ray intersected any geometry
-</span><span class="k">if</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">geomID</span> <span class="o">!=</span> <span class="n">RTC_INVALID_GEOMETRY_ID</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Check if ray intersected any geometry</span>
+<span class="k">if</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">geomID</span> <span class="o">!=</span> <span class="n">RTC_INVALID_GEOMETRY_ID</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">color</span> <span class="o">=</span> <span class="n">embree</span><span class="o">::</span><span class="n">Vec3fa</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>and that’s it! The embree specific stuff ends here. I haven’t included the ray definition and the auxiliary functions to convert because they’re one liners and you can have a poke around in the repo. We then set the colour of the pixel:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Set pixel colour
-</span><span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Set pixel colour</span>
+<span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span>
 <span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span>
 <span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span>
 <span class="n">image</span><span class="p">.</span><span class="n">push_back</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)(</span><span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">));</span></code></pre></figure>
@@ -199,8 +199,8 @@
 
 <h3 id="output-image">Output image</h3>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Output image
-</span><span class="kt">unsigned</span> <span class="n">error</span> <span class="o">=</span> <span class="n">lodepng</span><span class="o">::</span><span class="n">encode</span><span class="p">(</span><span class="s">"hello.png"</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Output image</span>
+<span class="kt">unsigned</span> <span class="n">error</span> <span class="o">=</span> <span class="n">lodepng</span><span class="o">::</span><span class="n">encode</span><span class="p">(</span><span class="s">"hello.png"</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"encoder error "</span> <span class="o">&lt;&lt;</span> <span class="n">error</span> <span class="o">&lt;&lt;</span> <span class="s">": "</span> <span class="o">&lt;&lt;</span> <span class="n">lodepng_error_text</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span></code></pre></figure>
 
 <p>I’m using lodepng to write the image to file, nothing too complex going on here, and then we get this!</p>
@@ -213,8 +213,8 @@
 
 <p>Now we should clean up after ourselves and leave no memory leaks</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Release the scene
-</span><span class="n">rtcReleaseScene</span><span class="p">(</span><span class="n">scene</span><span class="p">);</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Release the scene</span>
+<span class="n">rtcReleaseScene</span><span class="p">(</span><span class="n">scene</span><span class="p">);</span></code></pre></figure>
 
 <p>and that’s pretty much it.</p>
 

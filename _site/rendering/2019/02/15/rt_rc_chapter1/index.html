@@ -10,7 +10,7 @@
 <link href="/basic.css" rel="stylesheet">
 <link href="/highlight.css" rel="stylesheet">
 <link href="/index.css" rel="stylesheet">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl&apos;s Pixels" />
 <script src="//darrylgouder.disqus.com/embed.js" async></script>
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -40,9 +40,9 @@
 
 <h1 id="chapter-1-a-simple-monte-carlo-program">Chapter 1: A Simple Monte Carlo Program</h1>
 
-<p>The first chapter is very straightforward. Demonstrating Monte Carlo by estimating <script type="math/tex">\pi</script> is a prevalent computational statistics example.</p>
+<p>The first chapter is very straightforward. Demonstrating Monte Carlo by estimating \(\pi\) is a prevalent computational statistics example.</p>
 
-<p>The code snippet for this that is presented in the book is very simple and self explanatory. A point is generated inside a square and if it is inside the circle, we increase the counter tracking the number of points inside the circle. We divide this final count by the total number of points we generate to get an average answer to <script type="math/tex">\pi</script>.</p>
+<p>The code snippet for this that is presented in the book is very simple and self explanatory. A point is generated inside a square and if it is inside the circle, we increase the counter tracking the number of points inside the circle. We divide this final count by the total number of points we generate to get an average answer to \(\pi\).</p>
 
 <p align="center" style="color:red;">
 <b>
@@ -50,7 +50,7 @@ It’s time to go look at the book - read up until the you get to the 2nd code s
 </b>
 </p>
 
-<p>One of the questions of those uninitiated in probability and Monte Carlo theory might be: How does this type of computation work and how does it end up giving us an estimate of <script type="math/tex">\pi</script>? This stems from what is known as the <strong>expected value</strong>.</p>
+<p>One of the questions of those uninitiated in probability and Monte Carlo theory might be: How does this type of computation work and how does it end up giving us an estimate of \(\pi\)? This stems from what is known as the <strong>expected value</strong>.</p>
 
 <p>A classic example in explaining the expected value is trying to answer the question:</p>
 
@@ -72,25 +72,25 @@ What is the probability that I will get a heads, when I flip a fair coin?
 
 <p>The mathematical notation used to describe the expected value is:</p>
 
-<script type="math/tex; mode=display">E[X] = \sum_{i=1}^k x_i p_i = x_1 p_1 + x_2 p_2 + ... + x_k p_k</script>
+\[E[X] = \sum_{i=1}^k x_i p_i = x_1 p_1 + x_2 p_2 + ... + x_k p_k\]
 
 <ul>
-  <li><script type="math/tex">E[X]</script> is the expected value of <script type="math/tex">X</script>, our statistical experiment.</li>
-  <li><script type="math/tex">x_i</script> is the result of each sample that we compute of our function</li>
-  <li><script type="math/tex">p_i</script> is the probability weight of this sample. They must sum up to 1.</li>
+  <li>\(E[X]\) is the expected value of \(X\), our statistical experiment.</li>
+  <li>\(x_i\) is the result of each sample that we compute of our function</li>
+  <li>\(p_i\) is the probability weight of this sample. They must sum up to 1.</li>
 </ul>
 
 <p>I’ll use another example rather than a coin toss to tie with the above equation. If we had a fair 6-sided dice, the expected value would be:</p>
 
-<script type="math/tex; mode=display">E[X] = \sum_{i=1}^k x_i p_i = \frac{1}{6} + \frac{2}{6} + \frac{3}{6} +  \frac{4}{6} + \frac{5}{6} + \frac{6}{6} = 3.5</script>
+\[E[X] = \sum_{i=1}^k x_i p_i = \frac{1}{6} + \frac{2}{6} + \frac{3}{6} +  \frac{4}{6} + \frac{5}{6} + \frac{6}{6} = 3.5\]
 
-<p>where <script type="math/tex">x_i</script> was the dice roll and $$ \frac{1}{6} was the probability weight. If dice wasn’t fair, the weights would be different - that doesn’t matter as long as they sum up to one.</p>
+<p>where \(x_i\) was the dice roll and $$ \frac{1}{6} was the probability weight. If dice wasn’t fair, the weights would be different - that doesn’t matter as long as they sum up to one.</p>
 
 <p>Back to our original monte carlo example, the reason why this works is a theorem known as the <strong>Law of Large Numbers</strong>. The weak law of large numbers states that if we take a number of samples and average them, it will <em>PROBABLY</em> converge to the expected value. The strong law of large numbers states that it will converge <em>ALMOST SURELY</em> (with probability 1). We’re not going to go down this rabbit hole, the one of interest to us in the weak law.</p>
 
-<p>An important term that we should define is <strong>variance</strong>. In our example, we were trying to compute <script type="math/tex">\pi</script>, which makes this  the mean we’re trying to estimate. The variance, in very informal language, measures how spread out our sample computations are from this mean. The lower the variance, the less spread out the samples are and the more accurate our computed mean is to the expected value (the expected value is also known as the mean). If we have high variance, this means our samples are spread out, and we might be using an ineffective function to computationally find our mean. There are ways to quantify variance which are useful for estimating the error of our Monte Carlo techniques, however I think it would not be fruitful for now to discuss those.</p>
+<p>An important term that we should define is <strong>variance</strong>. In our example, we were trying to compute \(\pi\), which makes this  the mean we’re trying to estimate. The variance, in very informal language, measures how spread out our sample computations are from this mean. The lower the variance, the less spread out the samples are and the more accurate our computed mean is to the expected value (the expected value is also known as the mean). If we have high variance, this means our samples are spread out, and we might be using an ineffective function to computationally find our mean. There are ways to quantify variance which are useful for estimating the error of our Monte Carlo techniques, however I think it would not be fruitful for now to discuss those.</p>
 
-<p>The <strong>Law of Diminishing Returns</strong> explains the idea that the more samples we take, the more we need than before, to get an accurate answer.  In terms of numbers, if you want to half the error that you’re getting, you’ll need to quadruple the amount of samples. Here is how the error between our estimated value of <script type="math/tex">\pi</script> and actual <script type="math/tex">\pi</script> decreases as we compute more samples.</p>
+<p>The <strong>Law of Diminishing Returns</strong> explains the idea that the more samples we take, the more we need than before, to get an accurate answer.  In terms of numbers, if you want to half the error that you’re getting, you’ll need to quadruple the amount of samples. Here is how the error between our estimated value of \(\pi\) and actual \(\pi\) decreases as we compute more samples.</p>
 
 <p align="center">
 <img src="http://localhost:4000/assets/posts/rt_rc_chapter1/pi_estimate.png" alt=" $$ \pi $$ Estimate error" />

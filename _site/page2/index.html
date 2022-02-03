@@ -10,7 +10,7 @@
 <link href="/basic.css" rel="stylesheet">
 <link href="/highlight.css" rel="stylesheet">
 <link href="/index.css" rel="stylesheet">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl&apos;s Pixels" />
 
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -58,13 +58,13 @@ Start reading the chapter right until you get to the code that computes the inte
 </b>
 </p>
 
-<p>The integral is <script type="math/tex">\int_0^2 x^2 dx</script> which will compute the area under the curve, with the limits 0 to 2. So how do we translate this into a Monte Carlo estimate? I was a bit confused by the sudden appearance of the 2 being multiplied with the average(x^2, 0, 2) function. Why are we multiplying the sample average by 2? Well as it turns out, this how we perform Monte Carlo integration. A generic integral of the form:</p>
+<p>The integral is \(\int_0^2 x^2 dx\) which will compute the area under the curve, with the limits 0 to 2. So how do we translate this into a Monte Carlo estimate? I was a bit confused by the sudden appearance of the 2 being multiplied with the average(x^2, 0, 2) function. Why are we multiplying the sample average by 2? Well as it turns out, this how we perform Monte Carlo integration. A generic integral of the form:</p>
 
-<script type="math/tex; mode=display">F = \int_a^b f(x)</script>
+\[F = \int_a^b f(x)\]
 
 <p>can be estimated with a Monte Carlo estimator by performing</p>
 
-<script type="math/tex; mode=display">(b-a) \frac{1}{N} \sum_{i=0}^{N-1} f(X_i)</script>
+\[(b-a) \frac{1}{N} \sum_{i=0}^{N-1} f(X_i)\]
 
 
     
