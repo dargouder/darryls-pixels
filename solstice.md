@@ -4,6 +4,19 @@ title: "Solstice"
 
 Solstice is my multiplatform physically-based renderer, written in C++. The objective of this project is for self-teaching goals, given my interest in ray tracing techniques.
 
+
+## IMAGE COMPARER
+
+<div class="image-comparer">
+  <div class="image-comparer__window">
+    <img class="image-comparer__image" src="/assets/solstice/cornellBoxOriginal.png" width="500" height="500">
+  </div>
+
+  <div class="image-comparer__window image-comparer__overlay">
+    <img class="image-comparer__image" src="/assets/solstice/cornellGlass.png" width="500" height="500">
+  </div>
+</div>
+
 The renderer is self-contained on GitHub and all dependencies are part of the source.
 
 embree for accelerated ray-intersection queries. There is also a self-authored BVH but the performance does not compete with that of embree and will be temporarily phased out as I will be focussing more on developing light transport related algorithms rather than ray-acceleration.
