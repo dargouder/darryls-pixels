@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-05T12:48:55+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Darryl’s Pixels</title><subtitle>Blog about code and stuff...</subtitle><author><name>Darryl Gouder</name></author><entry><title type="html">Vulkan Adventures</title><link href="http://localhost:4000/rendering/2019/08/02/vulkan_adventures/" rel="alternate" type="text/html" title="Vulkan Adventures" /><published>2019-08-02T10:30:00+02:00</published><updated>2019-08-02T10:30:00+02:00</updated><id>http://localhost:4000/rendering/2019/08/02/vulkan_adventures</id><content type="html" xml:base="http://localhost:4000/rendering/2019/08/02/vulkan_adventures/">&lt;p&gt;After several months at work using DX12 I got the itch for doing some low-level graphics work in my personal time, so I started my foray into Vulkan a few weeks ago.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-05T14:53:53+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Darryl’s Pixels</title><subtitle>Blog about code and stuff...</subtitle><author><name>Darryl Gouder</name></author><entry><title type="html">Vulkan Adventures</title><link href="http://localhost:4000/rendering/2019/08/02/vulkan_adventures/" rel="alternate" type="text/html" title="Vulkan Adventures" /><published>2019-08-02T10:30:00+02:00</published><updated>2019-08-02T10:30:00+02:00</updated><id>http://localhost:4000/rendering/2019/08/02/vulkan_adventures</id><content type="html" xml:base="http://localhost:4000/rendering/2019/08/02/vulkan_adventures/">&lt;p&gt;After several months at work using DX12 I got the itch for doing some low-level graphics work in my personal time, so I started my foray into Vulkan a few weeks ago.&lt;/p&gt;
 
 &lt;p&gt;I didn’t really want to start from some beginner’s tutorial so I did some hunting and found Arsen’s Vulkan streams which are perfect for what I wanted.&lt;/p&gt;
 
@@ -150,13 +150,13 @@ Read the book right up until he proposes making his own PDF. I’ll lengthen the
 
 &lt;p&gt;So the area function Dr. Shirley is trying to calculate is:&lt;/p&gt;
 
-\[\int_0^2 C' r dr = \frac{1}{2} [C'r^2]_0^2 = 2C'
+\[\int_0^2 C&apos; r dr = \frac{1}{2} [C&apos;r^2]_0^2 = 2C&apos;
 \\
-1 = 2C'
+1 = 2C&apos;
 \\
-C' = \frac{1}{2}\]
+C&apos; = \frac{1}{2}\]
 
-&lt;p&gt;Knowing that \(p(r) = C'r\) this leads to \(p(r) = \frac{r}{2}\). The rest is pretty readable and understandable so I’ll move onto something else.&lt;/p&gt;
+&lt;p&gt;Knowing that \(p(r) = C&apos;r\) this leads to \(p(r) = \frac{r}{2}\). The rest is pretty readable and understandable so I’ll move onto something else.&lt;/p&gt;
 
 &lt;p&gt;A short introduction into probability theory with a bit more formality will go a long way into helping you understand what Dr. Shirley computes in the book and other future graphics problems.&lt;/p&gt;
 
