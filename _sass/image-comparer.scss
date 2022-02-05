@@ -1,0 +1,33 @@
+.image-comparer {
+    box-sizing: border-box;
+    position: relative;
+    height: 500px; /*should be the same height as the images*/
+
+    &__window {
+        box-sizing: border-box;
+        position: absolute;
+        width: auto;
+        height: auto;
+        overflow: hidden;
+    }
+
+    &__image {
+        box-sizing: border-box;
+        display: block;
+        height: 500px; /*should be the same height as the images*/
+        width: 500px;  /*should be the same width as the images*/
+        max-width: unset;
+    }
+
+    &__slider {
+        box-sizing: border-box;
+        position: absolute;
+        z-index: 9;
+        cursor: ew-resize;
+        width: 40px;
+        height: 40px;
+        background-color: #2196F3;
+        opacity: 0.7;
+        border-radius: 50%;
+    }
+}
