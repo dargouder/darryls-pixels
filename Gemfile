@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'jekyll'
-gem 'nokogiri', '>= 1.18.9'
 
 # Core plugins that directly affect site building
 group :jekyll_plugins do
