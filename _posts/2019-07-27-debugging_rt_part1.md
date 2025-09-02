@@ -1,4 +1,5 @@
 ---
+layout: post
 title:  "Debugging a raytracer: part 1"
 date:   2019-07-27 10:30
 categories: rendering

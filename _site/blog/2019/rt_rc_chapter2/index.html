@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Ray Tracing The Rest of Your Life: A reader's companion, Chapter 2 | Darryl Gouder
+    
+  
+</title>
+<meta name="author" content="Darryl Gouder">
+<meta name="description" content="">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/al-folio/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/al-folio/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/al-folio/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/al-folio/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/al-folio/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="http://0.0.0.0:8080/al-folio/blog/2019/rt_rc_chapter2/">
+
+<!-- Dark Mode -->
+<script src="/al-folio/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script>
+
+  <link defer rel="stylesheet" href="/al-folio/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/al-folio/">
+          
+            
+              <span class="font-weight-bold">Darryl</span>
+            
+            
+            Gouder
+          
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/al-folio/">about
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/al-folio/blog/">blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/al-folio/publications/">publications
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/al-folio/projects/">projects
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/al-folio/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+
+
+
+
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Ray Tracing The Rest of Your Life: A reader's companion, Chapter 2</h1>
+    <p class="post-meta">
+      Created on February 21, 2019
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/al-folio/blog/2019"> <i class="fa-solid fa-calendar fa-sm"></i> 2019 </a>
+      
+      
+
+      
+          ·  
+        
+          
+            <a href="/al-folio/blog/category/rendering"> <i class="fa-solid fa-tag fa-sm"></i> rendering</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>Welcome back! If you’re joining from the 1st post, you can skip ahead and start reading from the Chapter 2 title. If not, here’s a <a href="https://dargouder.github.io/darryls-pixels/rendering/2019/02/15/rt_rc_chapter1/" target="_blank" rel="external nofollow noopener">link</a> to the first post as there’s some information in the beginning about this blog series.</p>
+
+<h1 id="chapter-2-one-dimensional-mc-integration">Chapter 2: One Dimensional MC Integration</h1>
+
+<p>Monte Carlo is widely used to solve integrals of higher dimensions, where an analytical method is not possible, or other integral computational methods are intractable. Dr. Shirley selects a simple integral to show how effective Monte Carlo integration is.</p>
+
+<p align="center" style="color:red;">
+<b>
+Start reading the chapter right until you get to the code that computes the integral. Don’t worry if you don’t get it, I’m going to explain everything.
+</b>
+</p>
+
+<p>The integral is \(\int_0^2 x^2 dx\) which will compute the area under the curve, with the limits 0 to 2. So how do we translate this into a Monte Carlo estimate? I was a bit confused by the sudden appearance of the 2 being multiplied with the average(x^2, 0, 2) function. Why are we multiplying the sample average by 2? Well as it turns out, this how we perform Monte Carlo integration. A generic integral of the form:</p>
+
+\[F = \int_a^b f(x)\]
+
+<p>can be estimated with a Monte Carlo estimator by performing</p>
+
+\[(b-a) \frac{1}{N} \sum_{i=0}^{N-1} f(X_i)\]
+
+<p>\(x_i\) are uniformly distributed random numbers between 0 and 1, and \(N\) is the number of samples you pick.</p>
+
+<p align="center" style="color:red;">
+<b>
+Read the book right up until he proposes making his own PDF. I’ll lengthen the explanation and drive in a bit of probability, enough to show you the ropes but not enough to bore you (hopefully).
+</b>
+</p>
+
+<p>So the area function Dr. Shirley is trying to calculate is:</p>
+
+\[\int_0^2 C' r dr = \frac{1}{2} [C'r^2]_0^2 = 2C'
+\\
+1 = 2C'
+\\
+C' = \frac{1}{2}\]
+
+<p>Knowing that \(p(r) = C'r\) this leads to \(p(r) = \frac{r}{2}\). The rest is pretty readable and understandable so I’ll move onto something else.</p>
+
+<p>A short introduction into probability theory with a bit more formality will go a long way into helping you understand what Dr. Shirley computes in the book and other future graphics problems.</p>
+
+<p>We’ve been talking about random variables for a while. We know that generating a uniform random variable means that we use a function to generate a number in a particular range and since we stipulated that it is uniform, this also means that any other number in that range could have been picked with the exact same probability.</p>
+
+<p>We’ll introduce some terms.</p>
+<ul>
+  <li>\(X\) represents the random variable. Since we’re using random variables to estimate something, this also is referred to as a random variable!</li>
+  <li>\(P(X)\) represents the probability of \(X\).</li>
+  <li>\(P(X = x)\) represents the probability that \(X\) is a particular value \(x\).</li>
+</ul>
+
+<p>To exemplify these terms, in our statistical experiment we are going to toss a coin twice.</p>
+<ul>
+  <li>\(X\) is the number of heads that we get.  This is the random variable that is the result of our 2 coin tosses. \(X\) will either be 0 (\(TT\)), 1(\(HT\) or \(TH\)) or 2(\(HH\)).</li>
+  <li>\(P(X)\) will be the probability of getting 0, 1 or 2 heads.</li>
+  <li>\(P(X = x)\) will be a particular sequence of coin tosses, such as \(TT\) or \(TH\).</li>
+</ul>
+
+<p>The cumulative distribution function (CDF) and the probability mass/density function (pmf/PDF) are the 2 pillars of understanding the nature of a random variable. The reason I used mass/density is because mass is used when we are describing a discrete distribution, and density is used in the continuous case. In this example, it’s the pmf (a coin toss is a discrete experiment) that I’ll be talking about, however the same ideas hold for the PDF.</p>
+
+<p>This is the CDF of the experiment above:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(P(X)\)</th>
+      <th>CDF \(P(X &lt;=x)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>As you may have noticed, the CDF is maxed out at one. 1 is the upper limit of the probability that an event from an experiment occurs - 0 is the lower limit. It is called cumulative because the probability distribution accumulates with each event. If you haven’t understood what that table is representing, let’s use our words!</p>
+
+<ul>
+  <li>\(P(X=0)\) means that that probability of getting no heads is 0.25.</li>
+  <li>\(P(X&lt;=1)\) is \(\)P(X=1) + P(X=0)\(\). \(P(X=1)\) is \(TH\) and \(HT\) and therefore we’re adding 0.5 to the probability of getting \(TT\) which is 0.25, hence 0.75.</li>
+  <li>\(P(X&lt;=2)\) is just the probability of \(HH\) (0.25) + the previous 0.75, our final result being 1.</li>
+</ul>
+
+<p>This is what the CDF looks like when we plot it</p>
+
+<p align="center">
+<img src="http://0.0.0.0:8080/assets/posts/rt_rc_chapter2/coin_toss_cdf.png" alt="CDF of 2 coin tosses ">
+</p>
+
+<p>So can you guess what the PMF will look like? Hint: the pmf will describe the probability of each occurring coin toss .</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(P(X)\)</th>
+      <th>PMF \(P(X =x)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0 heads</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <td>1 heads</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>2 heads</td>
+      <td>0.25</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you sum up all the probabilities, they’ll add up to 1. So the PMF is showing us the probability of an event occurrence and CDF is showing us the probability of a range of events occuring. I know I keep on repeating this statement, but it’s common to not fully grasp the difference between the CDF and PMF and be unsure of their purpose. If you look hard at both, see you can go from the CDF to the PMF and vice versa.</p>
+
+<p>So what happens if we’re dealing with continuous cases?
+Well for starters, the PMF changes to a PDF. We are also usually presented with functions to represent the CDF and PDF. To find the CDF from the PDF, we integrate the PDF from \(-\infty\) to \(x\), where \(x\) is a placeholder variable.</p>
+
+<p>I’m not going to show an example because at this point I think you should go back to the book but wait until this final concept.</p>
+
+<p>We’ve mentioned that we have been generating uniform random variables using a PRNG. In many cases however, we would like to take these uniform random numbers and would like to make them follow some other kind of distribution. We want to <em>transform</em> them. The way to go about this is a technique known as the Inverse Transform method. The technique is very simple and very powerful:
+ Let’s say we have a random variable \(X\) , that has a CDF \(F(X)\). We want to generate values distributed according to this distribution. The steps to do this are:</p>
+
+<ol>
+  <li>Generate a uniform random number u between \([0,1]\).</li>
+  <li>Find the inverse of the CDF of \(F(X)\).</li>
+  <li>We find X by computing \(F^{-1}(u)\).  \(X\) is now distributed according to \(F(X)\).</li>
+</ol>
+
+<p>The Inverse Transform method warrants its own blog post so I won’t go into detail about its intrinsics and its edge cases and so forth.</p>
+
+<p align="center" style="color:red;">
+<b>
+	Go back to the book and come back right after you’ve obtained the inverse of the CDF. 
+</b>
+</p>
+
+<p>We have computed a Monte Carlo estimation of an integral, and now we’ve computed the inverse cdf of a PDF, which means we can transform our uniform random numbers into the PDF that we selected. If you recall, we said that we draw our samples from a uniform distribution from 1 to 0 in our original definition of the Monte Carlo estimator. The PDF of this estimator is \(\frac{1}{1-0}\) which is \(1\). The more general Monte Carlo estimator definition is actually this:</p>
+
+\[\frac{1}{N} \sum_{i=0}^{N-1} \frac{f(X_i)}{p(X_i)}\]
+
+<p>Where \(p(X_i)\) is the PDF from which the samples are drawn. By selecting a PDF that matches the shape of the function that we are trying to estimate, we are weighting the samples so as to reduce the variance. This is known as Importance Sampling! Choosing a good PDF is an ongoing form of research. For our integral, the PDF Dr Shirley’s picked is \(\frac{1}{r}\).</p>
+
+<p>For the moment, we’ve been drawing samples from the uniform distribution, but thanks to the inverse transform method, we’re now using these uniform numbers and transforming them to match the new PDF. We’ll then compute our original integral with these new random variables and divide by the new PDF.</p>
+
+<p align="center" style="color:red;">
+<b>
+Now would be a good time to finish the chapter.
+</b>
+</p>
+
+<p>If you feel more mathematically inclined, <a href="https://twitter.com/Atrix256" target="_blank" rel="external nofollow noopener">Alan Wolfe</a> has a great <a href="https://blog.demofox.org/2018/06/12/monte-carlo-integration-explanation-in-1d/" target="_blank" rel="external nofollow noopener">blog post about One-Dimensional Monte Carlo Integration</a>. He’s also got a plethora of posts that will have some common content with this blog post series. I would also suggest you have a look at <a href="http://www.pbr-book.org/3ed-2018/Monte_Carlo_Integration.html" target="_blank" rel="external nofollow noopener">PBRT Chapter 13 </a> if you’re feeling brave!</p>
+
+<p>If you remember, we spoke about stratification previously. Let’s take the original integral \(\int_0^2 x^2\). To stratify the points, we’ll divide the interval in 4 bins. If I am taking N samples, we are going to take \(\frac{n}{4}\) samples per bin, so let’s call this value \(k\). The Monte Carlo estimate using stratified sampling now looks like this:</p>
+
+\[\int_0^2 x^2 = (0.5 - 0)\frac{1}{k} \sum_{i=0}^{k} x_1^2 + 
+(1.0 - 0.5)\frac{1}{k} \sum_{i=0}^{k} x_2^2 +
+\\
+(1.5 - 1)\frac{1}{k} \sum_{i=0}^{k} x_3^2 +
+(2 - 1.5)\frac{1}{k} \sum_{i=0}^{k} x_4^2\]
+
+<p>\(x_1\) is a random number between 0 and 0.5, \(x_2\) is between 0.5 and 1.0, \(x_3\) between 1.0 and 1.5, and \(x_4\) between 1.5 and 2, giving us a total of \(N\) samples.</p>
+
+<p>Here is a self contained program showing the stratified and naive Monte Carlo estimations.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">float</span> <span class="n">simpleMcRes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">samples</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">;</span>
+
+	<span class="kt">int</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">samplesPerBin</span> <span class="o">=</span> <span class="n">samples</span> <span class="o">/</span> <span class="n">bins</span><span class="p">;</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">bins</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">float</span> <span class="n">binStart</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">)</span> <span class="o">/</span> <span class="kt">float</span><span class="p">(</span><span class="n">bins</span><span class="p">);</span>
+
+		<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">binStart</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">samplesPerBin</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">drand48</span><span class="p">();</span>
+			<span class="n">simpleMcRes</span> <span class="o">+=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+
+			<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">drand48</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">)</span><span class="o">/</span><span class="kt">float</span><span class="p">(</span><span class="n">bins</span><span class="p">);</span>
+			<span class="n">res</span> <span class="o">+=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span> 
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="n">simpleMcRes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="o">*</span> <span class="n">simpleMcRes</span> <span class="o">/</span> <span class="kt">float</span><span class="p">(</span><span class="n">samples</span><span class="p">);</span>
+	<span class="n">res</span> <span class="o">=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span> <span class="o">*</span> <span class="n">res</span> <span class="o">/</span> <span class="kt">float</span><span class="p">(</span><span class="n">samples</span><span class="p">);</span>
+
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Simple MC: "</span> <span class="o">&lt;&lt;</span> <span class="n">simpleMcRes</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Stratified MC: "</span> <span class="o">&lt;&lt;</span> <span class="n">res</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Stratification warrants its own post following some discussions with some friends. I wanted to show certain properties but felt that this post would be too long.</p>
+
+<p>That’s pretty much it for this post, next up is Chapter 3 and 4.</p>
+
+<p>If you have any questions and feedback, feel free to comment or contact me via twitter/email.</p>
+
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/al-folio/blog/2019/vulkan_adventures/">Vulkan Adventures</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/al-folio/blog/2019/debugging_rt_part1/">Debugging a raytracer: part 1</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/al-folio/blog/2019/update/">Planned updates, stay tuned!</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/al-folio/blog/2019/rt_rc_chapter1/">Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/al-folio/blog/2018/prngs/">Pseudo Random Number Generation</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+</div>
+
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2025
+  Darryl
+  
+  Gouder. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/al-folio/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/al-folio/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/al-folio/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+
+
+
+
+
+<!-- Load Common JS -->
+<script src="/al-folio/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script>
+<script defer src="/al-folio/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script>
+<script defer src="/al-folio/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/al-folio/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/al-folio/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/al-folio/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/al-folio/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/al-folio/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/al-folio/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script>
+  <script src="/al-folio/assets/js/search-data.js"></script>
+  <script src="/al-folio/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script>
+
+
+
+
+  </body>
+</html>

@@ -1,4 +1,5 @@
 ---
+layout: post
 title:  "Vulkan Adventures"
 date:   2019-08-02 10:30
 categories: rendering

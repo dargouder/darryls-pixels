@@ -1,4 +1,5 @@
 ---
+layout: post
 title:  "Ray Tracing The Rest of Your Life: A reader's companion, Chapter 1"
 date:   2019-02-15 00:00
 categories: rendering

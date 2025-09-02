@@ -1,170 +1,682 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
 <meta charset="utf-8">
-<meta name="author" content="Darryl Gouder">
-<meta name="description" content="Blog about code and stuff...">
-<title> Home › Darryl's Pixels</title>
-<link rel="canonical" href="http://localhost:4000/">
-<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="/basic.css" rel="stylesheet">
-<link href="/highlight.css" rel="stylesheet">
-<link href="/index.css" rel="stylesheet">
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Darryl's Pixels" />
-
-
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-<header>
-  <h1><a href="">Darryl's Pixels</a></h1>
-  <nav>
-    <div><a href="/">Home</a><a href="/archive/">Archive</a><a href="/about/">About</a><a href="/solstice/">Solstice</a></div>
-    <div><a href="https://twitter.com/dargouder"><i class="fa fa-twitter"></i></a><a href="https://github.com/dargouder"><i class="fa fa-github"></i></a><a href="mailto:dargouder@gmail.com"><i class="fa fa-envelope"></i></a></div>
-  </nav>
-</header>
-<main>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
   
-  <article>
+  
+    Darryl Gouder
+  
+</title>
+<meta name="author" content="Darryl Gouder">
+<meta name="description" content="">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/al-folio/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/al-folio/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/al-folio/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/al-folio/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/al-folio/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="http://0.0.0.0:8080/al-folio/">
+
+<!-- Dark Mode -->
+<script src="/al-folio/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script>
+
+  <link defer rel="stylesheet" href="/al-folio/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
     <header>
-      <h1><a href="/rendering/2019/08/02/vulkan_adventures/">Vulkan Adventures</a></h1>
-      <time datetime="2019-08-02T10:30:00+02:00">August 2, 2019</time>
-    </header>
-<p>After several months at work using DX12 I got the itch for doing some low-level graphics work in my personal time, so I started my foray into Vulkan a few weeks ago.</p>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
 
-<p>I didn’t really want to start from some beginner’s tutorial so I did some hunting and found Arsen’s Vulkan streams which are perfect for what I wanted.</p>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
 
-<p>He blazes through the code explaining a lot of things, but with my DX12 experience, they’re quite brilliant because they get straight to the point and then I do my own digging into the spec.</p>
+          <!-- About -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/al-folio/">about
+              
+                <span class="sr-only">(current)</span>
+              
+            </a>
+          </li>
 
-<p>This is the first time I’ve ever watched a coding stream and I’m really enjoying it. In my first ever development job in Malta, we did a lot of paired programming and this was ridiculuously useful. Seeing someone with 10+ years of experience coding (20+ in his case), making decisions and thinking out loud is very educational. One of the things that I like to hear the most about is not what they know about a topic but they learnt it - and seeing his problem solving approach is great.</p>
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/al-folio/blog/">blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/al-folio/publications/">publications
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/al-folio/projects/">projects
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/al-folio/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
 
-<p>Before I started it, I didn’t really have any major reason for leaning towards Vulkan other than curiousity, but at this point I’m pretty hooked, because of…</p>
 
-<h1 id="validation-layers">Validation Layers</h1>
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        <div class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+        <span class="font-weight-bold">Darryl</span> 
+        Gouder
+      
+    </h1>
+    <p class="desc"></p>
+  </header>
 
-<p>The validation layers are tremendously helpful at telling you what might go wrong if you incorrectly setup certain structs. At some point I got a validation layer error that I wasn’t understanding, so I ran the debugger through the validation layer itself to see what was triggering it. Being able to see inside them was brilliant and a huge leap from the opacity that comes with DX12, albeit DX12 has a fantastic debug layer.</p>
+  <article>
+    
+      <div class="profile float-right">
+        
+          
+          
+          
+          
 
-<h1 id="mesh-shaders">Mesh Shaders</h1>
 
-<p>Another major reason I was attracted to the streams was Mesh Shaders. They were a major reason for why I got my own RTX card, and having just finished the video where we get to do the mesh shading optimizations, I’m really looking forward to investigating more advanced uses for them. I’ve been fascinated with GPUs for a long time and I want to push my RTX to its limit with the amount of geometry it can process. Using the mesh shaders for doing extensive advanced culling is something I will definetly need when I try to process some of the massive scenes I intend to experiment with. The end goal is the Moana data set, we’ll see how that fares, I’m going to need a big GPU for that!</p>
 
-<p>The main drawback is the lack of tools for debugging mesh shaders but more on that in the next section.</p>
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/al-folio/assets/img/me_in_wanaka-480.webp 480w,/al-folio/assets/img/me_in_wanaka-800.webp 800w,/al-folio/assets/img/me_in_wanaka-1400.webp 1400w," type="image/webp" sizes="(min-width: 930px) 270.0px, (min-width: 576px)
+      30vw, 95vw">
+      
+    
+    <img src="/al-folio/assets/img/me_in_wanaka.jpg?f6a5c85b7fb994f9b0aabe3e2e026be3" class="img-fluid z-depth-1
+      rounded" width="100%" height="auto" alt="me_in_wanaka.jpg" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </source></picture>
 
-<p>I’ll move the meshlet computation offline once I start working with bigger meshes because it can get quite expensive.</p>
+  
+</figure>
 
-<h1 id="debugging-and-profiling-tools">Debugging and Profiling Tools</h1>
+        
+        
+      </div>
+    
 
-<p>It seems Vulkan is still not as well-catered as DX12 when it comes to debugging and profiling tools. I’ve had a lot of NSight crashes and it’s the only decent free GPU profiling tool I can find. RenderDoc is robust but of no help when it comes to mesh shading. I’m quite disappointed with the debugging and profiling tools for Vulkan so far.</p>
+    <div class="clearfix">
+<p>Welcome to my webpage! My name is Darryl Gouder, originally from Malta but currently living in Prague, in the Czech Republic. I am currently on pause from my PhD at Charles University, working as a Senior Research Engineer at Wētā FX’s Rendering Department. I joined Wētā and moved to Wellington back in 2020 BC (Before Covid) and have been there since. On September 2022, I moved to Prague to start my PhD at Charles University, where I’m investigating ways of accelerating subsurface scattering simulations in the context of Monte Carlo Path Tracing. Wētā is very kindly financially supporting me during my studies, and my PhD project supervisor is Jirka Vorba.</p>
 
-<p>It seems DX12 has Mesh Shader debugging support in NSight but not Vulkan. With DX12 we used Pix extensively and it is loaded with a ton of useful features like performance counters, BVH visualization, gpu buffer readouts. NSight crashed immediately when I ran my Vulkan program :( I’ll have to check my driver compatibility, hopefully it’s something as trivial as that.</p>
+<p>Previous to all this, I lived in London, working as a Researcher and Rendering Software Developer at MPC Film. I was part of the New Technologies team, before I moved to the Genesis team, working on real-time rendering problems for virtual production.</p>
 
-<h1 id="volk">volk</h1>
+<p>This website and blog contain some of the things I work on in my personal time. Apart from my interest in computer graphics and mathematics, I unfortunately have many other interests spread between trail running, weight lifting, photography, cooking, baking and an unhealthy obsession with Tolkien’s works.</p>
 
-<p>Extensions are an integral part of Vulkan, and volk comes a long way in solving that problem. It’s useful but I did the mistake of not reading the fine print in the documentation. I was including it into my own project, but I did not replace the vulkan.h include with volk.h inside the libraries I was including in my own source, which resulted in me chasing a missing symbol related bug which appeared as a simple access violation. This swamped a whole Saturday and Sunday, resulting in a cancelled pub session and some time with Dark Souls. Learnt my lesson now!</p>
+<p>The views, thoughts, and opinions expressed on this website are solely my own and do not necessarily reflect the views of any employer, organization, or other individual.</p>
+</div>
 
-<p># Vulkan Spec</p>
+    <!-- News -->
+    
+      <h2>
+        <a href="/al-folio/news/" style="color: inherit">news</a>
+      </h2>
+      <div class="news">
+  
+    
+    <div class="table-responsive">
+      <table class="table table-sm table-borderless">
+        
+        
+        
+          <tr>
+            <th scope="row" style="width: 20%">Jun 28, 2025</th>
+            <td>
+              
+                Moved to the new website format!
 
-<p>The spec is super-detailed and well written but whoever thought that it should be in 1 web page deserves a world of pain! If it wasn’t in 1 page I would consider it to being one of the finest pieces of literature, comparable to PBRT and Lord of the Rings :)</p>
+              
+            </td>
+          </tr>
+        
+      </table>
+    </div>
+  
+</div>
 
-<p>Reading the spec is very valuable, a lot of nuances are explained. The DX12 spec wasn’t this detailed (although it’s improved and I believe they’ve now released some really detailed documentation on GitHub).</p>
+    
 
-<h1 id="verbosity">Verbosity</h1>
+    <!-- Latest posts -->
+    
+      <h2>
+        <a href="/al-folio/blog/" style="color: inherit">latest posts</a>
+      </h2>
+      <div class="news">
+  
+    
+    <div class="table-responsive" style="max-height: 60vw">
+      <table class="table table-sm table-borderless">
+        
+        
+        
+          <tr>
+            <th scope="row" style="width: 20%">Aug 02, 2019</th>
+            <td>
+              
+                <a class="news-title" href="/al-folio/blog/2019/vulkan_adventures/">Vulkan Adventures</a>
+              
+            </td>
+          </tr>
+        
+          <tr>
+            <th scope="row" style="width: 20%">Jul 27, 2019</th>
+            <td>
+              
+                <a class="news-title" href="/al-folio/blog/2019/debugging_rt_part1/">Debugging a raytracer: part 1</a>
+              
+            </td>
+          </tr>
+        
+          <tr>
+            <th scope="row" style="width: 20%">Jun 11, 2019</th>
+            <td>
+              
+                <a class="news-title" href="/al-folio/blog/2019/update/">Planned updates, stay tuned!</a>
+              
+            </td>
+          </tr>
+        
+      </table>
+    </div>
+  
+</div>
 
-<p>Brace yourself for a lot of typing. In terms of verbosity it seems to go OpenGL -&gt; DX11 ———–&gt; DX 12 —&gt; Vulkan. You have to write a lot of code to get things up and running. My previous experience with DX 12 prepared me for this so it was no shocker, but it can get exhausting.</p>
+    
 
-<h1 id="predictability">Predictability</h1>
+    <!-- Selected papers -->
+    
+      <h2>
+        <a href="/al-folio/publications/" style="color: inherit">selected publications</a>
+      </h2>
+      <div class="publications">
+  <ol class="bibliography"><li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+      
+        
+          
+          
 
-<p>Using the Vulkan C API becomes very intuitive once you get used to the nomenclature. The validation layer guides you when you do something wrong, the structs follow a similar structure and so you kind of get used to the verbosity.</p>
 
-<h1 id="final-thoughts">Final Thoughts</h1>
 
-<p>If you’ve never tried a low level graphics API, give Vulkan a go. It’s been a great experience (sometimes aggravating but what’s the fun in graphics programming if you sometimes don’t want to scream) and learning how the GPU works is something every programmer should do.</p>
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+    
+    <img src="/al-folio/assets/img/publication_preview/data_driven_dwivedi_preview.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="data_driven_dwivedi_preview.png" data-zoomable loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
 
-<p>I’m loading the Buddha obj and rendering it using a mesh shader pipeline, returning the surface normal as a colour in the fragment shader. I’m using ImGui to display some stats, such as the FPS, GPU time and a plot of the GPU time. I store 100 samples and plot them, using the min and max of the samples to get it displaying well, otherwise it’s pretty much a straight light since the computation time doesn’t fluctuate much.</p>
+  
+</figure>
 
-<p>I’d be lying if I told you that you should look at my code, but you shouldn’t. It’s a horrible mess that’s been written in haste and hacky. But there is hope: I’ve also been watching Yan Chernikov’s Game Engine series which is reaaaallllllyyyy good and once I do a forward pass and a deferred pass in Vulkan, I’ll re-start the whole process and write th engine in a modular cleaner fashion. Unfortunately for now, all I have is a lot unclean code, but HEY IT WORKS SUE ME!</p>
+        
+      
+    </div>
+  
 
-<p>Here’s a pretty image of where I’m at:</p>
+  <!-- Entry bib key -->
+  <div id="10.1111:cgf.70164" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">A Data-Driven Approach to Analytical Dwivedi Guiding</div>
+    <!-- Author -->
+    <div class="author">
+      
 
-<p align="center">
-<img src="http://localhost:4000/assets/posts/vulkan_adventures/vulkanMeshShaders.png" alt="Vulkan Mesh Shaders" />
-</p>
+      
+      Darryl
+            Gouder, Jirí
+            Vorba, Marc
+            Droske, and
+        <span class="more-authors" title="click to view 1 more author" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '1 more author' ? 'Alexander Wilkie' : '1 more author';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">1 more author</span>
+      
+      
+    </div>
 
-<p>With that, I’m signing off. If you have any questions feel free to reach out to me on Twitter or LinkedIn or email, ciao!</p>
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>Computer Graphics Forum</em>,  2025
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+      
+        <a href="https://doi.org/10.1111/cgf.70164" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a>
+      
+      
+      
+      
+        
+          <a href="https://cgg.mff.cuni.cz/publications/a-data-driven-approach-to-dwivedi-guiding/" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+</li></ol>
+</div>
+
+    
+
+    <!-- Social -->
+    
+      <div class="social">
+        <div class="contact-icons">
+  
+      <a href="https://bsky.app/profile/dargouder.bsky.social" title="Bluesky" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-bluesky"></i></a>
+    
+
+  
+      <a href="mailto:%64%61%72%67%6F%75%64%65%72@%67%6D%61%69%6C.%63%6F%6D" title="email"><i class="fa-solid fa-envelope"></i></a>
+    
+
+  
+      <a href="https://www.linkedin.com/in/dargouder" title="LinkedIn" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    
+
+  
+      <a href="/al-folio/feed.xml" title="RSS Feed"><i class="fa-solid fa-square-rss"></i></a>
+    
+
+  
+      <a href="https://scholar.google.com/citations?user=PagUcxUAAAAJ" title="Google Scholar" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar"></i></a>
+    
+
+</div>
+
+        <div class="contact-note"></div>
+      </div>
+    
 
     
   </article>
+</div>
 
-  <article>
-    <header>
-      <h1><a href="/rendering/2019/07/27/debugging_rt_part1/">Debugging a raytracer: part 1</a></h1>
-      <time datetime="2019-07-27T10:30:00+02:00">July 27, 2019</time>
-    </header>
-<p>Working on my renderer sometimes leads to some hair-tearing moments when bugs start to come up. When you’re tracing millions of rays and you’ve got millions of pixels, tracking down a visual bug is very tricky.</p>
+      
+    </div>
 
-<p>This blog post is the first in a series where I’ll discuss what I did to debug certain bugs that I encountered. The series isn’t planned - when I get a bug which gives me a lot of grief, I’ll write down what I did to find it and fix it.</p>
-
-<p>I’ll preface that my renders look slightly darker than PBRT’s. I have many missing features such as RR, MIS, QMC sampling, all which affect this. I also have very basic sample filtering (just a box filter) and the renderer is not feature compatible with PBRT. Other than that though, it should look close enough to PBRT.</p>
-
-<p>When I implemented my glass material and compared the rendered image to PBRT there was a huge difference between them:</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/posts/debugging_rt_part1/wrongRender.jpg" alt="Incorrect Render" />
-</p>
-
-<p>This is the kind of bug that is quite difficult to debug - you have specific paths related to specific geometry which are misbehaving. Of course I knew where the problem, it’s somewhere in the Glass Material and Specular Transmission and Reflection BxDFs ( or so I initially thought :) ).</p>
-
-<p>The first thing I started looking at was my Fresnel functions. Since that’s the function that determines whether a ray is refracting or reflecting, this made sense to me. I computed the function for certain angles and certain reflective indices by hand and wrote unit tests to confirm matches which they did.</p>
-
-<p>With this out of the way, I looked at the refraction function and did the same - however everything was fine here too.</p>
-
-<p>At this point I knew I needed to get in deeper, so I had to write some utlity code to be able to walk through a single pixel path, using the debugger and not render a full frame until I get to that pixel.</p>
-
-<p>Coding it up didn’t require a lot of effort however working out what the ray was supposed to be doing required a lot of hand calculations. Another way to do this is to use an open source renderer and debug it, PBRT and Mitsuba are the 2 obvious suggestions.</p>
-
-<p>Once I started up the renderer and had my first ray intersection with the glass, the ray was supposed to refract into the surface. The next bounce was going to be inside the glass and hit the other side of the box from the inside, and exit. My ray did no such thing! As soon as it was refracted inside the box, it refracted again but for some weird reason, it went back inside the box (which is actually a reflection). I had a hunch something was up with my normals, so I had a look through the code that might have been modifying the normals and realized that I was prematurely face forwarding my normals when I was populating my surface interaction record right after the first intersection.</p>
-
-<p>I had not noticed this bug before because I was not transmitting rays through a medium for the Mirror and Matte material so it was never an issue.</p>
-
-<p>Fixing that bug significantly improved my image</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/posts/debugging_rt_part1/cornellBoxPBRTNoReflection.png" alt="PBRT Incorrect Render" />
-<img src="http://localhost:4000/assets/posts/debugging_rt_part1/cornellGlassWrongNoReflection.png" alt="Solstice Incorrect Render" />
-
-</p>
-<p>but this was completely different! I realized that having modified the normals during the surface interaction record population, another place where I was faceforwarding normals liberally was my Next Event Estimation code. I cleaned up this part of the code, rendered, got a match with PBRT and introduced reflection back in:</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/posts/debugging_rt_part1/cornellGlassWrongReflectionNoLight.png" alt="Correct Render" />
-</p>
-
-<p>At this point I introducted the reflection back in but had a bug. I had been going at this for quite a few days (over a week), with only an hour or 2 to spare after work to look at this bug. So I took a bit of a shortcut and debugged a single ray through PBRT. This one I found with PBRT very quickly - I wasn’t setting the SpecularBounce flag to true when I was reflecting from a dielectric and so was computing direct lighting on a specular reflective surface. Fixing that gave me the final image:</p>
-
-<p align="center">
-<img src="http://localhost:4000/assets/posts/debugging_rt_part1/cornellGlass.png" alt="Correct Render" />
-</p>
-
-<p>Which is pretty much what PBRT is getting albeit slightly darker. 
-One of the major pieces of advice I can give to people who are about to start their foray into ray tracing is the importance of unit testing. Testing every little function properly means that all the small moving parts work and gives you some peace of mind when using them and you’re hunting for a bug you might have.</p>
-
-<p>I’m dedicating my August to just writing unit tests for my existing code - I was doing that for some stuff but in my haste to get some features up and running, I neglected that part and it bit me in the ass finally :) Having said that, I do look at bugs as a potential learning experience, and this kind of bug allowed me to gain a more solid understanding of surface reflection.</p>
-
-<p>Another thing that was informative was following a path in PBRT. With a tool like the Visual Studio Debugger, this becomes quite easy.</p>
-
-<p>One thing which I really want to do is render a single path, and in the mean time have my Vulkan engine draw the path and the normal of each surface intersection, and hovering over the intersection point, I can get the material details, the fresnel reflectance value if it was a specular surface, that kind of stuff. I have given it a lot of thought and would love to do this but time is a major obstacle.</p>
-
-<p>That’s all I have today on this! The next post will probably be on debugging acceleration structures, the only issue is that I did the coding working on acceleration structures around February and as a result, my memory is a little hazy on my efforts so I might end up writing another acceleration structure to jog my memory and get new bugs, solve these problems and share the “wisdom”, with that, ciao!</p>
-
-
+    <!-- Footer -->
     
-  </article>
-
-</main>
-
-<footer>
-    <a  class="disabled" >« newer posts</a>
-    <span class="paginate">page 1 of 4</span>
-    <a  class="gray" href="/page2" >older posts »</a>
-</footer>
 
 
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2025
+  Darryl
+  
+  Gouder. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
 
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/al-folio/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/al-folio/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/al-folio/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+
+
+
+
+
+<!-- Load Common JS -->
+<script src="/al-folio/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script>
+<script defer src="/al-folio/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script>
+<script defer src="/al-folio/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/al-folio/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/al-folio/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/al-folio/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/al-folio/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/al-folio/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/al-folio/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script>
+  <script src="/al-folio/assets/js/search-data.js"></script>
+  <script src="/al-folio/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script>
+
+
+
+
+  </body>
+</html>
