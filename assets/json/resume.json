@@ -64,7 +64,15 @@
       "authors": "Gouder, Darryl and Vorba, Jirí and Droske, Marc and Wilkie, Alexander",
       "releaseDate": "2025-06-23",
       "url": "https://diglib.eg.org/items/469b13ad-55e6-4b4d-ad72-abcedfe1d6d0"
+    },
+    {
+      "name": "Sculpting Colour Space",
+      "publisher": "ACM SIGGRAPH Talk",
+      "authors": "Yanli Zhao, Darryl Gouder and Rob Pieké",
+      "releaseDate": "2019-07-29",
+      "url": "https://dl.acm.org/doi/10.1145/3306307.3328169"
     }
+
   ],
   "skills": [
     {
