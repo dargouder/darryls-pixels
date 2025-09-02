@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://dargouder.github.io/darryls-pixels/sitemap.xml
