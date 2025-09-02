@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/darryls-pixels/cv/";
           },
-        },{id: "post-vulkan-adventures",
+        },{id: "post-why-am-i-doing-a-phd",
+        
+          title: "Why am I doing a PhD?",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/darryls-pixels/blog/2025/why-a-phd/";
+          
+        },
+      },{id: "post-vulkan-adventures",
         
           title: "Vulkan Adventures",
         
@@ -122,21 +133,21 @@ ninja.data = [{
             },},{id: "news-moved-to-the-new-website-format",
           title: 'Moved to the new website format!',
           description: "",
-          section: "News",},{id: "projects-valinor",
-          title: 'Valinor',
-          description: "Vulkan Path Tracer",
-          section: "Projects",handler: () => {
-              window.location.href = "/darryls-pixels/projects/1_valinor/";
-            },},{id: "projects-menegroth-deprecated",
+          section: "News",},{id: "projects-menegroth-deprecated",
           title: 'Menegroth (deprecated)',
           description: "Rust Path Tracer",
           section: "Projects",handler: () => {
-              window.location.href = "/darryls-pixels/projects/2_menegroth/";
+              window.location.href = "/darryls-pixels/projects/menegroth/";
             },},{id: "projects-solstice-deprecated",
           title: 'Solstice (deprecated)',
           description: "C++ Path Tracer",
           section: "Projects",handler: () => {
-              window.location.href = "/darryls-pixels/projects/3_solstice/";
+              window.location.href = "/darryls-pixels/projects/solstice/";
+            },},{id: "projects-valinor",
+          title: 'Valinor',
+          description: "Vulkan Path Tracer",
+          section: "Projects",handler: () => {
+              window.location.href = "/darryls-pixels/projects/valinor/";
             },},{
         id: 'social-bluesky',
         title: 'Bluesky',
