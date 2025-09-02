@@ -24,8 +24,8 @@ Valinor can load Mitsuba scene files, enabling direct validation against Mitsuba
 <div class="row justify-content-center">
     <div class="col-sm-8">
 <img-comparison-slider>
-  {% include figure.liquid path="assets/img/valinor/valinor_cornell_box.png" class="img-fluid rounded z-depth-1" zoomable=true slot="first" %}
-  {% include figure.liquid path="assets/img/valinor/mitsuba_cornell_box.png" class="img-fluid rounded z-depth-1" zoomable=true slot="second" %}
+  {% include figure.liquid path="assets/img/valinor/valinor_cornell_box.png" class="img-fluid rounded z-depth-1" slot="first" %}
+  {% include figure.liquid path="assets/img/valinor/mitsuba_cornell_box.png" class="img-fluid rounded z-depth-1" slot="second" %}
 </img-comparison-slider>
     </div>
   </div>
