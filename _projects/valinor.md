@@ -5,6 +5,7 @@ description: Vulkan Path Tracer
 img: assets/img/valinor/valinor_logo.png
 importance: 1
 category: Personal
+selected: true
 # related_publications: true
 images:
   compare: true
